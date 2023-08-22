@@ -1,85 +1,86 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.SceneManagement;
+using static SubmarineMovement;
 
 public class UIManager : MonoBehaviour
 {
-GameObject[] pauseObjects;
+    private GameObject[] _pauseObjects;
+    private const float Tolerance = 0.01f;
+    private void OnEnable() => OnHit += ShowPaused;
 
-private void OnEnable()
-{
-	SubmarineMovement.OnHit += showPaused;
-}
-private void OnDisable()
-{
-	SubmarineMovement.OnHit -= showPaused;
-}
-// Use this for initialization
-	void Start () {
-		Time.timeScale = 1;
-		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
-		hidePaused();
-	}
+    private void OnDisable() => OnHit -= ShowPaused;
 
-	// Update is called once per frame
-	void Update () {
+    // Use this for initialization
+    private void Start()
+    {
+        Time.timeScale = 1;
+        _pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        HidePaused();
+    }
 
-		//uses the p button to pause and unpause the game
-		if(Input.GetKeyDown(KeyCode.P))
-		{
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-				showPaused();
-			} else if (Time.timeScale == 0){
-				Debug.Log ("high");
-				Time.timeScale = 1;
-				hidePaused();
-			}
-		}
-	}
+    // Update is called once per frame
+    private void Update()
+    {
+        //uses the p button to pause and unpause the game
+        if (!Input.GetKeyDown(KeyCode.P)) return;
+        if (Math.Abs(Time.timeScale - 1) < Tolerance)
+        {
+            Time.timeScale = 0;
+            ShowPaused();
+        }
+        else if (Time.timeScale == 0)
+        {
+            Debug.Log("high");
+            Time.timeScale = 1;
+            HidePaused();
+        }
+    }
 
 
-	//Reloads the Level
-	public void Reload()
-	{
-		Application.LoadLevel(Application.loadedLevel);
-	}
+    //Reloads the Level
+    public void Reload()
+    {
+        Application.LoadLevel(Application.loadedLevel);
+    }
 
-	//controls the pausing of the scene
-	public void pauseControl(){
-			if(Time.timeScale == 1)
-			{
-				Time.timeScale = 0;
-				showPaused();
-			} else if (Time.timeScale == 0){
-				Time.timeScale = 1;
-				hidePaused();
-			}
-	}
+    //controls the pausing of the scene
+    public void PauseControl()
+    {
+        switch (Time.timeScale)
+        {
+            case 1:
+                Time.timeScale = 0;
+                ShowPaused();
+                break;
+            case 0:
+                Time.timeScale = 1;
+                HidePaused();
+                break;
+        }
+    }
 
-	//shows objects with ShowOnPause tag
-	public void showPaused()
-	{
-		Time.timeScale = 0;
-		foreach(GameObject g in pauseObjects){
-			g.SetActive(true);
-		}
-	}
+    //shows objects with ShowOnPause tag
+    private void ShowPaused()
+    {
+        Time.timeScale = 0;
+        foreach (var g in _pauseObjects)
+        {
+            g.SetActive(true);
+        }
+    }
 
-	//hides objects with ShowOnPause tag
-	public void hidePaused(){
-		foreach(GameObject g in pauseObjects){
-			g.SetActive(false);
-		}
-	}
+    //hides objects with ShowOnPause tag
+    private void HidePaused()
+    {
+        foreach (var g in _pauseObjects)
+        {
+            g.SetActive(false);
+        }
+    }
 
-	//loads inputted level
-	public void LoadLevel(string level){
-		Application.LoadLevel(level);
-	}
+    //loads inputted level
+    public void LoadLevel(string level)
+    {
+        Application.LoadLevel(level);
+    }
 }

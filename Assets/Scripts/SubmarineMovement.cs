@@ -1,45 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SubmarineMovement : MonoBehaviour
 {
     public float moveSpeed;
     public Rigidbody2D rb;
 
-    private Vector2 moveDirection;
+    private Vector2 _moveDirection;
     
     public delegate void HitThingAction();
     public static event HitThingAction OnHit;
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         ProcessInputs();
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         Move();
     }
 
-    void ProcessInputs()
+    private void ProcessInputs()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        var moveX = Input.GetAxisRaw("Horizontal");
+        var moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
+        _moveDirection = new Vector2(moveX, moveY).normalized;
     }
 
-    void Move()
+    private void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed );
+        rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed );
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(OnHit != null)
-            OnHit();
+        OnHit?.Invoke();
     }
-
 }
