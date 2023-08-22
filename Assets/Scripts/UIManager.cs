@@ -22,8 +22,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) )
-            Application.Quit();
+        bool ctrl = Input.GetKey(KeyCode.LeftControl)
+                    || Input.GetKey(KeyCode.RightControl);
+        if (Input.GetKeyDown(KeyCode.Q) && ctrl)
+            Quit();
 
         //uses the p button to pause and unpause the game
         if (!Input.GetKeyDown(KeyCode.P)) return;
