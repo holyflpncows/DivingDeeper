@@ -63,7 +63,9 @@ private void OnDisable()
 	}
 
 	//shows objects with ShowOnPause tag
-	public void showPaused(){
+	public void showPaused()
+	{
+		Time.timeScale = 0;
 		foreach(GameObject g in pauseObjects){
 			g.SetActive(true);
 		}
