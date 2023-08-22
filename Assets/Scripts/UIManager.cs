@@ -7,9 +7,9 @@ public class UIManager : MonoBehaviour
 {
     private GameObject[] _pauseObjects;
     private const float Tolerance = 0.01f;
-    private void OnEnable() => OnHit += ShowPaused;
+    private void OnEnable() => YouAreDead += ShowPaused;
 
-    private void OnDisable() => OnHit -= ShowPaused;
+    private void OnDisable() => YouAreDead -= ShowPaused;
 
     // Use this for initialization
     private void Start()

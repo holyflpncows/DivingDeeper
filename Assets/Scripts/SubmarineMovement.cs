@@ -10,7 +10,7 @@ public class SubmarineMovement : MonoBehaviour
 
     public delegate void HitThingAction();
 
-    public static event HitThingAction OnHit;
+    public static event HitThingAction YouAreDead;
 
     // Update is called once per frame
     private void Update()
@@ -39,6 +39,6 @@ public class SubmarineMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
-            OnHit?.Invoke();
+            YouAreDead?.Invoke();
     }
 }
