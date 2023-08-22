@@ -6,8 +6,9 @@ public class SubmarineMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 _moveDirection;
-    
+
     public delegate void HitThingAction();
+
     public static event HitThingAction OnHit;
 
     // Update is called once per frame
@@ -31,8 +32,9 @@ public class SubmarineMovement : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed );
+        rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed);
     }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         OnHit?.Invoke();
