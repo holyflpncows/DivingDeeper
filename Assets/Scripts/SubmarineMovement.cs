@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class NewBehaviourScript : MonoBehaviour
+public class SubmarineMovement : MonoBehaviour
 {
     public float moveSpeed;
     public Rigidbody2D rb;
 
     private Vector2 moveDirection;
+    
+    public delegate void HitThingAction();
+    public static event HitThingAction OnHit;
 
     // Update is called once per frame
     void Update()
@@ -30,6 +34,12 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed );
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(OnHit != null)
+            OnHit();
+    }
+
 }

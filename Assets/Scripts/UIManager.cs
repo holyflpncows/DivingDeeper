@@ -1,12 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
 GameObject[] pauseObjects;
 
-	// Use this for initialization
+private void OnEnable()
+{
+	SubmarineMovement.OnHit += showPaused;
+}
+private void OnDisable()
+{
+	SubmarineMovement.OnHit -= showPaused;
+}
+// Use this for initialization
 	void Start () {
 		Time.timeScale = 1;
 		pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
@@ -33,7 +45,8 @@ GameObject[] pauseObjects;
 
 
 	//Reloads the Level
-	public void Reload(){
+	public void Reload()
+	{
 		Application.LoadLevel(Application.loadedLevel);
 	}
 
