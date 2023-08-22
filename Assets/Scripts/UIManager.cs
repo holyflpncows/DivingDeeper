@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Q) && Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.RightControl) )
             Application.Quit();
 
         //uses the p button to pause and unpause the game
@@ -40,7 +40,10 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
+    public void Quit()
+    {
+        Application.Quit();
+    }
     //Reloads the Level
     public void Reload()
     {
