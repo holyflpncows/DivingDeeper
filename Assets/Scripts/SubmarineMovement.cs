@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class SubmarineMovement : MonoBehaviour
@@ -37,6 +38,7 @@ public class SubmarineMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        OnHit?.Invoke();
+        if(GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
+            OnHit?.Invoke();
     }
 }
