@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        bool ctrl = Input.GetKey(KeyCode.LeftControl)
+        var ctrl = Input.GetKey(KeyCode.LeftControl)
                     || Input.GetKey(KeyCode.RightControl);
         if (Input.GetKeyDown(KeyCode.Q) && ctrl)
             Quit();

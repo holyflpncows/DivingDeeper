@@ -26,5 +26,10 @@ namespace Upgrades
         /// how much damage it can take measured in HP
         /// </summary>
         public int Durability;
+
+        public void TakeDamage(int damage)
+        {
+            Durability -= damage;
+        }
     }
 }
