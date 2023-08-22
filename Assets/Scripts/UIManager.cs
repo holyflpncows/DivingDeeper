@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static SubmarineMovement;
 
 public class UIManager : MonoBehaviour
@@ -40,7 +41,7 @@ public class UIManager : MonoBehaviour
     //Reloads the Level
     public void Reload()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.LoadScene("MainLevel");
     }
 
     //controls the pausing of the scene
@@ -81,6 +82,7 @@ public class UIManager : MonoBehaviour
     //loads inputted level
     public void LoadLevel(string level)
     {
-        Application.LoadLevel(level);
+        Debug.Log(level);
+        SceneManager.LoadScene(level);
     }
 }
