@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Propeller : Base
+    public class Propeller : Part
     {
         public int Speed;
     }

@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class CommunicationRadio : Base
+    public class CommunicationRadio : Part
     {
         /// <summary>
         /// measured in decibel-milli-watts

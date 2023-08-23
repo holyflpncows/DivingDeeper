@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Sonar : Base
+    public class Sonar : Part
     {
         public int Distance;
     }

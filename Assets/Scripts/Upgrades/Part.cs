@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Base
+    public class Part
     {
         /// <summary>
         /// Display Name

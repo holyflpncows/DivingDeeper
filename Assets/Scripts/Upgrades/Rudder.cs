@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Rudder: Base
+    public class Rudder: Part
     {
         public int Height;
         public int Width;

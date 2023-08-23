@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Hull : Base
+    public class Hull : Part
     {
         
     }

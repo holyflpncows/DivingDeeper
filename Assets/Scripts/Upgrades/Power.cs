@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Power: Base
+    public class Power: Part
     {
         /// <summary>
         /// measured in kWh

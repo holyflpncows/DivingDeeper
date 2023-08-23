@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class CrewQuarters : Base
+    public class CrewQuarters : Part
     {
         
     }

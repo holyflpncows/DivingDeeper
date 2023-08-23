@@ -1,6 +1,6 @@
 namespace Upgrades
 {
-    public class Periscope : Base
+    public class Periscope : Part
     {
         
     }
