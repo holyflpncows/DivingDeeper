@@ -93,4 +93,9 @@ public class UIManager : MonoBehaviour
         Debug.Log(level);
         SceneManager.LoadScene(level);
     }
+
+    public void ClickTest()
+    {
+        Debug.Log("Clicked");
+    }
 }
