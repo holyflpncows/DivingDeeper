@@ -1077,6 +1077,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ce931e06914db2bf38a1ae6964f7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ego: 0
+  investors: 0
+  cashMoney: 0
 --- !u!4 &948499001
 Transform:
   m_ObjectHideFlags: 0
@@ -1608,7 +1611,7 @@ MonoBehaviour:
   displayName: Poop
   cost: 300
   weight: 300
-  coolnessCoefficient: 50
+  coolnessCoefficient: 20
   drag: 333
   durability: 333
 --- !u!1 &1932894555
