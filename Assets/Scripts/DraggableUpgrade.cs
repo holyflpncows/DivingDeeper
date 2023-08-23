@@ -5,10 +5,11 @@ using Parts;
 public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private CanvasGroup _canvasGroup;
-    private Vector3 _originalAnchoredPosition;
+    private GameObject _clone;
 
     public Part Upgrade;
     public Canvas Canvas;
+    public Camera Camera;
     [HideInInspector]
     public Transform ParentAfterDrag;
     [HideInInspector]
@@ -22,9 +23,13 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     public void OnBeginDrag(PointerEventData eventData)
     {
         ParentAfterDrag = transform.parent;
-        _originalAnchoredPosition = transform.position;
+        var index = transform.GetSiblingIndex();
 
+        transform.SetParent(Canvas.transform, false);
         _canvasGroup.blocksRaycasts = false;
+        _clone = Instantiate(gameObject, ParentAfterDrag);
+        _clone.transform.SetSiblingIndex(index);
+        _clone.GetComponent<DraggableUpgrade>().SetDrag(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -41,9 +46,16 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         }
         else
         {
-            transform.position = _originalAnchoredPosition;
+            Destroy(gameObject);
+            _clone.GetComponent<DraggableUpgrade>().SetDrag(false);
         }
 
         _canvasGroup.blocksRaycasts = true;
+    }
+
+    public void SetDrag(bool dragging)
+    {
+        _canvasGroup.alpha = dragging ? 0.5f : 1;
+        _canvasGroup.blocksRaycasts = !dragging;
     }
 }

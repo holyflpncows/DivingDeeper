@@ -7,6 +7,7 @@ public class UpgradeSlot : MonoBehaviour, IDropHandler
     {
         var dropped = eventData.pointerDrag;
         var draggable = dropped.GetComponent<DraggableUpgrade>();
+
         draggable.ParentAfterDrag = transform;
         draggable.DroppedInSlot = true;
     }
