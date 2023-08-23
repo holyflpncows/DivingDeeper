@@ -1,8 +1,0 @@
-namespace Parts
-{
-    public class Rudder: Part
-    {
-        public int Height;
-        public int Width;
-    }
-}

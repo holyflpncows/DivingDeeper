@@ -42,16 +42,10 @@ public class Submarine : MonoBehaviour
             _parts.Add(part);
         }
 
-        public void SwapPart(Part part)
-        {
-            // swap same type with new part
-            _parts.Add(part);
-        }
+        public int GetDurability => _parts.Sum(p => p.durability);
         
-        public List<Part> GetParts => _parts;
+        public int GetDrag => _parts.Sum(p => p.drag);
 
-        public int GetDurability => _parts.Sum(p => p.Durability);
-        
-        public int GetDrag => _parts.Sum(p => p.Drag);
-        
+        public bool HasPart(Part part) => _parts.Any(p => part.name == p.displayName 
+                                                          && p.partType == part.partType);
     }

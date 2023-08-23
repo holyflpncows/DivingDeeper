@@ -39,15 +39,6 @@ public class SubmarineMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Submarine.Instance.AddPart(new Hull
-        {
-            Name = "shiny",
-            Cost = 200,
-            CoolnessCoefficient = 10,
-            Drag = 33,
-            Durability = 9,
-            Weight = 1000
-        });
         if(GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
             YouAreDead?.Invoke();
     }

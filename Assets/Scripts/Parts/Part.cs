@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Parts
 {
@@ -9,41 +10,47 @@ namespace Parts
         /// affects the lenght of time curve stays flat
         /// </summary>
         private const double FlatNess = 3;
+        
         /// <summary>
         /// affects the magnitude of the final inflated amount
         /// </summary>
         private const double Magnitude = 5;
-        
+
+        /// <summary>
+        /// PartType
+        /// </summary>
+        public PartType partType;
+
         /// <summary>
         /// Display Name
         /// </summary>
-        public string Name;
+        public string displayName;
 
         /// <summary>
         /// Cost in cash-money
         /// </summary>
-        public int Cost;
+        public int cost;
 
         /// <summary>
         /// in kilograms ish
         /// </summary>
-        public int Weight;
+        public int weight;
 
         /// <summary>
         /// Coefficient of how cool it looks, smells, or sounds
         /// 0-100
         /// </summary>
-        public int CoolnessCoefficient;
+        public int coolnessCoefficient;
 
         /// <summary>
         /// affects speed and manoeuvring
         /// </summary>
-        public int Drag;
+        public int drag;
 
         /// <summary>
         /// how much damage it can take measured in HP
         /// </summary>
-        public int Durability;
+        public int durability;
 
         /// <summary>
         /// Perceived Durability
@@ -51,6 +58,6 @@ namespace Parts
         /// </summary>
         /// <returns></returns>
         public double PerceivedDurability =>
-            Math.Ceiling(Durability * ( 1 + Math.Pow((CoolnessCoefficient + PlayerAttributes.Instance.Ego) / 200f, FlatNess)) * Magnitude);
+            Math.Ceiling(durability * ( 1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.Ego) / 200f, FlatNess)) * Magnitude);
     }
 }
