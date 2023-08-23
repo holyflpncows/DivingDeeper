@@ -43,7 +43,7 @@ public class SubmarineMovement : MonoBehaviour
         {
             Name = "shiny",
             Cost = 200,
-            CoolnessFactor = 1000,
+            CoolnessCoefficient = 10,
             Drag = 33,
             Durability = 9,
             Weight = 1000
