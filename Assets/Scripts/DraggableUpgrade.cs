@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-using Upgrades;
+using Parts;
 
 public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
