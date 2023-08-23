@@ -1,4 +1,5 @@
 using System.Linq;
+using Parts;
 using UnityEngine;
 
 public class SubmarineMovement : MonoBehaviour
@@ -38,6 +39,15 @@ public class SubmarineMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        Submarine.Instance.AddPart(new Hull
+        {
+            Name = "shiny",
+            Cost = 200,
+            CoolnessFactor = 1000,
+            Drag = 33,
+            Durability = 9,
+            Weight = 1000
+        });
         if(GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
             YouAreDead?.Invoke();
     }

@@ -1,4 +1,4 @@
-namespace Upgrades
+namespace Parts
 {
     public class Sonar : Part
     {

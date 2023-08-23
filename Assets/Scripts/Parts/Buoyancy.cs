@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Upgrades
+namespace Parts
 {
     public class Buoyancy: Part
     {
