@@ -40,7 +40,7 @@ namespace Parts
         /// What the player sees
         /// </summary>
         /// <returns></returns>
-        public double PerceivedDurability() =>
-            Math.Ceiling(Durability * Math.Log((CoolnessCoefficient + PlayerAttributes.Instance.Ego) / 100f));
+        public double PerceivedDurability =>
+            Math.Ceiling(Durability + Math.Pow(Durability, (CoolnessCoefficient + PlayerAttributes.Instance.Ego) / 100f));
     }
 }
