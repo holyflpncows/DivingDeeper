@@ -5,6 +5,15 @@ namespace Parts
     public class Part
     {
         /// <summary>
+        /// affects the lenght of time curve stays flat
+        /// </summary>
+        private const double FlatNess = 3;
+        /// <summary>
+        /// affects the magnitude of the final inflated amount
+        /// </summary>
+        private const double Magnitude = 5;
+        
+        /// <summary>
         /// Display Name
         /// </summary>
         public string Name;
@@ -41,6 +50,6 @@ namespace Parts
         /// </summary>
         /// <returns></returns>
         public double PerceivedDurability =>
-            Math.Ceiling(Durability + Math.Pow(Durability, (CoolnessCoefficient + PlayerAttributes.Instance.Ego) / 100f));
+            Math.Ceiling(Durability * ( 1 + Math.Pow((CoolnessCoefficient + PlayerAttributes.Instance.Ego) / 200f, FlatNess)) * Magnitude);
     }
 }
