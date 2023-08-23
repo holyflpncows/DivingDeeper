@@ -1,8 +1,9 @@
 using System;
+using UnityEngine;
 
 namespace Parts
 {
-    public class Part
+    public class Part : MonoBehaviour
     {
         /// <summary>
         /// affects the lenght of time curve stays flat
