@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Parts;
+using UnityEngine.UI;
 
 public class DraggableUpgrade : Part, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
@@ -20,7 +21,7 @@ public class DraggableUpgrade : Part, IBeginDragHandler, IEndDragHandler, IDragH
     {
         _canvasGroup = GetComponent<CanvasGroup>();
     }
-
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         ParentAfterDrag = transform.parent;
