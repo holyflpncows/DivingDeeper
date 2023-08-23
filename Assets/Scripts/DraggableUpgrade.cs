@@ -7,7 +7,8 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     private CanvasGroup _canvasGroup;
     private GameObject _clone;
 
-    //public Part PartUpgrade;
+    public PartType PartType;
+    public int UpgradeLevel;
     public Canvas Canvas;
     public Camera Camera;
     [HideInInspector]

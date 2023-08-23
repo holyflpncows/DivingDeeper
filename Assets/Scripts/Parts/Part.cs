@@ -7,10 +7,6 @@ namespace Parts
         /// </summary>
         public string Name;
         /// <summary>
-        /// Defines the type of part.
-        /// </summary>
-        public PartType Type;
-        /// <summary>
         /// Cost in cash-money
         /// </summary>
         public int Cost;
