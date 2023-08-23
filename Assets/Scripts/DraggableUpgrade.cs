@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Parts;
 
-public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class DraggableUpgrade : Part, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     private CanvasGroup _canvasGroup;
     private GameObject _clone;
