@@ -30,7 +30,7 @@ public class Submarine : MonoBehaviour
             }
         }
 
-        public void SetParts(List<Part> parts)
+        private static void SetParts(List<Part> parts)
         {
             Instance._parts = parts;
         }
@@ -38,7 +38,6 @@ public class Submarine : MonoBehaviour
         public void AddPart(Part part)
         {
             Debug.Log($"parts # {_parts.Count()}");
-            // check if has same type already 
             _parts.Add(part);
         }
 
