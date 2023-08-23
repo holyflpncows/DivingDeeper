@@ -7,7 +7,7 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
     private CanvasGroup _canvasGroup;
     private GameObject _clone;
 
-    public Part Upgrade;
+    //public Part PartUpgrade;
     public Canvas Canvas;
     public Camera Camera;
     [HideInInspector]
@@ -29,7 +29,7 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         _canvasGroup.blocksRaycasts = false;
         _clone = Instantiate(gameObject, ParentAfterDrag);
         _clone.transform.SetSiblingIndex(index);
-        _clone.GetComponent<DraggableUpgrade>().SetDrag(true);
+        _clone.GetComponent<DraggableUpgrade>().SetIgnoreDrag(true);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -47,13 +47,13 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         else
         {
             Destroy(gameObject);
-            _clone.GetComponent<DraggableUpgrade>().SetDrag(false);
+            _clone.GetComponent<DraggableUpgrade>().SetIgnoreDrag(false);
         }
 
         _canvasGroup.blocksRaycasts = true;
     }
 
-    public void SetDrag(bool dragging)
+    public void SetIgnoreDrag(bool dragging)
     {
         _canvasGroup.alpha = dragging ? 0.5f : 1;
         _canvasGroup.blocksRaycasts = !dragging;
