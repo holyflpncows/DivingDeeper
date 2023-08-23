@@ -35,7 +35,7 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        transform.position = Camera.ScreenToWorldPoint(Input.mousePosition);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -47,8 +47,8 @@ public class DraggableUpgrade : MonoBehaviour, IBeginDragHandler, IEndDragHandle
         }
         else
         {
-            Destroy(gameObject);
-            _clone.GetComponent<DraggableUpgrade>().SetIgnoreDrag(false);
+            //Destroy(gameObject);
+            //_clone.GetComponent<DraggableUpgrade>().SetIgnoreDrag(false);
         }
 
         _canvasGroup.blocksRaycasts = true;
