@@ -1604,13 +1604,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb18661eb4c15fb4abbf2c3b2ff566da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  partType: 0
-  displayName: 
-  cost: 0
-  weight: 0
-  coolnessCoefficient: 0
-  drag: 0
-  durability: 0
+  partType: 3
+  displayName: Poop
+  cost: 300
+  weight: 300
+  coolnessCoefficient: 50
+  drag: 333
+  durability: 333
 --- !u!1 &1932894555
 GameObject:
   m_ObjectHideFlags: 0
