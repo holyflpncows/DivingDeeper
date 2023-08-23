@@ -5,7 +5,7 @@ public class UpgradeButton : Part
 {
     public void Purchase()
     {
-        if (PlayerAttributes.Instance.CashMoney < this.cost)
+        if (PlayerAttributes.Instance.cashMoney < this.cost)
         {
             Debug.Log("You poor");
             //TODO popup to say you can't afford

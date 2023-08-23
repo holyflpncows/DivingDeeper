@@ -6,13 +6,12 @@ public class PlayerAttributes : MonoBehaviour
 
     /// <summary>
     /// ego of player
-    /// 0-100
     /// </summary>
-    public int Ego { get; private set; }
+    [Range(0, 100)] public int ego;
 
-    public int Investors { get; private set; }
-    
-    public int CashMoney { get; private set; }
+    public int investors;
+
+    public int cashMoney;
 
     private void Awake()
     {
@@ -29,8 +28,8 @@ public class PlayerAttributes : MonoBehaviour
     private void Start()
     {
         if (Instance == null) return;
-        Ego = Instance.Ego;
-        Investors = Instance.Investors;
-        CashMoney = Instance.CashMoney;
+        ego = Instance.ego;
+        investors = Instance.investors;
+        cashMoney = Instance.cashMoney;
     }
 }

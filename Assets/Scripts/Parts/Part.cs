@@ -10,7 +10,7 @@ namespace Parts
         /// affects the lenght of time curve stays flat
         /// </summary>
         private const double FlatNess = 3;
-        
+
         /// <summary>
         /// affects the magnitude of the final inflated amount
         /// </summary>
@@ -40,7 +40,7 @@ namespace Parts
         /// Coefficient of how cool it looks, smells, or sounds
         /// 0-100
         /// </summary>
-        public int coolnessCoefficient;
+        [Range(0, 100)] public int coolnessCoefficient;
 
         /// <summary>
         /// affects speed and manoeuvring
@@ -58,6 +58,8 @@ namespace Parts
         /// </summary>
         /// <returns></returns>
         public double PerceivedDurability =>
-            Math.Ceiling(durability * ( 1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.Ego) / 200f, FlatNess)) * Magnitude);
+            Math.Ceiling(durability *
+                         (1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / 200f, FlatNess)) *
+                         Magnitude);
     }
 }
