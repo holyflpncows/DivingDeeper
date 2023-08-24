@@ -1,7 +1,8 @@
 using System;
+using System.Linq;
 using Parts;
+using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using static SubmarineMovement;
 using static UpgradeButton;
@@ -91,15 +92,22 @@ public class UIManager : MonoBehaviour
 
     private void HidePaused() => Hide(_pauseObjects);
     private void HidePartStats() => Hide(_partStatsObjects);
-    private void HidePartStats(Part part, Vector3 position)
+    private void HidePartStats(Part part)
     {
         Hide(_partStatsObjects);
     }
 
-    private void ShowPartStats(Part part, Vector3 position)
+    private void  ShowPartStats(Part part)
     {
-        _partStatsObjects[0].gameObject.transform.SetPositionAndRotation(position, new Quaternion());
+        var cost = _partStatsObjects.First(p => p.gameObject.name == "Cost");
+        var costText = cost.GetComponent<TMP_Text>();
+        costText.SetText($"Cost: {part.cost}");
+        
+        var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
+        var durabilityText = durability.GetComponent<TMP_Text>();
+        durabilityText.SetText($"Durability: {part.durability}");
         Show(_partStatsObjects);
+        
     }
 
     //shows objects with ShowOnPause tag

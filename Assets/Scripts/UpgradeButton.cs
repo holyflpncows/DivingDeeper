@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
 {
-    public delegate void PartsStats(Part part, Vector3 position);
+    public delegate void PartsStats(Part part);
 
     public static event PartsStats PartsStatsEnter;
     public static event PartsStats PartsStatsExit;
@@ -39,11 +39,11 @@ public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         
-        PartsStatsEnter?.Invoke(this, gameObject.transform.position);
+        PartsStatsEnter?.Invoke(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        PartsStatsExit?.Invoke(this, gameObject.transform.position);
+        PartsStatsExit?.Invoke(this);
     }
 }
