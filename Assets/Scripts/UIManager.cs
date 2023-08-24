@@ -106,6 +106,20 @@ public class UIManager : MonoBehaviour
         var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
         var durabilityText = durability.GetComponent<TMP_Text>();
         durabilityText.SetText($"Durability: {part.PerceivedDurability}");
+        
+        var partName = _partStatsObjects.First(p => p.gameObject.name == "PartName");
+        var partNameText = partName.GetComponent<TMP_Text>();
+        partNameText.SetText(part.displayName);
+        
+        var weight = _partStatsObjects.First(p => p.gameObject.name == "Weight");
+        var weightText = weight.GetComponent<TMP_Text>();
+        weightText.SetText($"Weight: {part.weight}");
+        
+
+        var drag = _partStatsObjects.First(p => p.gameObject.name == "Drag");
+        var dragText = drag.GetComponent<TMP_Text>();
+        dragText.SetText($"Drag: {part.drag}");
+        
         ShowGameObjects(_partStatsObjects);
         
     }
