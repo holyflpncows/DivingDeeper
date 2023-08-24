@@ -105,7 +105,7 @@ public class UIManager : MonoBehaviour
         
         var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
         var durabilityText = durability.GetComponent<TMP_Text>();
-        durabilityText.SetText($"Durability: {part.durability}");
+        durabilityText.SetText($"Durability: {part.PerceivedDurability}");
         Show(_partStatsObjects);
         
     }
