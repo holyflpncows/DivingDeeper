@@ -1,8 +1,22 @@
+using System;
 using Parts;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class UpgradeButton : Part
+public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
 {
+    public delegate void PartsStats();
+
+    public static event PartsStats PartsStatsEnter;
+    public static event PartsStats PartsStatsExit;
+    
+    private void Start()
+    {
+        EventTrigger.Entry eventtype = new EventTrigger.Entry();
+        eventtype.eventID = EventTriggerType.PointerEnter;
+    }
+
     public void Purchase()
     {
         if (PlayerAttributes.Instance.cashMoney < this.cost)
@@ -20,5 +34,15 @@ public class UpgradeButton : Part
         
         Submarine.Instance.AddPart(this);
         
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        PartsStatsEnter?.Invoke();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        PartsStatsExit?.Invoke();
     }
 }

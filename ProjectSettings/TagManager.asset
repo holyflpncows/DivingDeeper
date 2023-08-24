@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ShowOnPause
   - Enemy
+  - PartStats
   layers:
   - Default
   - TransparentFX

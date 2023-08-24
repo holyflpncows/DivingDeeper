@@ -1,29 +1,49 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using static SubmarineMovement;
+using static UpgradeButton;
 
 public class UIManager : MonoBehaviour
 {
     private GameObject[] _pauseObjects;
+    private GameObject[] _partStatsObjects;
     private const float Tolerance = 0.01f;
-    private void OnEnable() => YouAreDead += ShowPaused;
 
-    private void OnDisable() => YouAreDead -= ShowPaused;
+    private void OnEnable()
+    {
+        YouAreDead += ShowPaused;
+        PartsStatsEnter += ShowPartStats;
+        PartsStatsExit += HidePartStats;
+    }
+
+    private void OnDisable()
+    {
+        YouAreDead -= ShowPaused;
+        PartsStatsEnter -= ShowPartStats;
+        PartsStatsExit -= HidePartStats;
+    }
+
 
     // Use this for initialization
     private void Start()
     {
         Time.timeScale = 1;
         _pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
         HidePaused();
+        HidePartStats();
     }
+
+    private void HidePartStats() => Hide(_partStatsObjects);
+    private void ShowPartStats() => Show(_partStatsObjects);
 
     // Update is called once per frame
     private void Update()
     {
         var ctrl = Input.GetKey(KeyCode.LeftControl)
-                    || Input.GetKey(KeyCode.RightControl);
+                   || Input.GetKey(KeyCode.RightControl);
         if (Input.GetKeyDown(KeyCode.Q) && ctrl)
             Quit();
 
@@ -46,6 +66,7 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
+
     //Reloads the Level
     public void Reload()
     {
@@ -68,20 +89,26 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    private void ShowPaused() => Show(_pauseObjects);
+
+    private void HidePaused() => Hide(_pauseObjects);
+
     //shows objects with ShowOnPause tag
-    private void ShowPaused()
+    private void Show(GameObject[] gameObjects)
     {
+        Debug.Log("show");
         Time.timeScale = 0;
-        foreach (var g in _pauseObjects)
+        foreach (var g in gameObjects)
         {
             g.SetActive(true);
         }
     }
 
     //hides objects with ShowOnPause tag
-    private void HidePaused()
+    private void Hide(GameObject[] gameObjects)
     {
-        foreach (var g in _pauseObjects)
+        Debug.Log("hide");
+        foreach (var g in gameObjects)
         {
             g.SetActive(false);
         }
