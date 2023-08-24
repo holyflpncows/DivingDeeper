@@ -88,13 +88,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void ShowPaused() => Show(_pauseObjects);
+    private void ShowPaused() => ShowGameObjects(_pauseObjects);
 
-    private void HidePaused() => Hide(_pauseObjects);
-    private void HidePartStats() => Hide(_partStatsObjects);
+    private void HidePaused() => HideGameObjects(_pauseObjects);
+    private void HidePartStats() => HideGameObjects(_partStatsObjects);
     private void HidePartStats(Part part)
     {
-        Hide(_partStatsObjects);
+        HideGameObjects(_partStatsObjects);
     }
 
     private void  ShowPartStats(Part part)
@@ -106,12 +106,12 @@ public class UIManager : MonoBehaviour
         var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
         var durabilityText = durability.GetComponent<TMP_Text>();
         durabilityText.SetText($"Durability: {part.PerceivedDurability}");
-        Show(_partStatsObjects);
+        ShowGameObjects(_partStatsObjects);
         
     }
 
     //shows objects with ShowOnPause tag
-    private void Show(GameObject[] gameObjects)
+    private void ShowGameObjects(GameObject[] gameObjects)
     {
         Debug.Log("show");
         Time.timeScale = 0;
@@ -122,7 +122,7 @@ public class UIManager : MonoBehaviour
     }
 
     //hides objects with ShowOnPause tag
-    private void Hide(GameObject[] gameObjects)
+    private void HideGameObjects(GameObject[] gameObjects)
     {
         Debug.Log("hide");
         foreach (var g in gameObjects)
