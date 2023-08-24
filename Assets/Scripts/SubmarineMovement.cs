@@ -39,7 +39,11 @@ public class SubmarineMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
+        if (GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
+        {
+            var deadSoundFx = GameObject.Find("Dead").GetComponent<AudioSource>();
+            deadSoundFx.Play();
             YouAreDead?.Invoke();
+        }
     }
 }
