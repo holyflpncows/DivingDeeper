@@ -36,9 +36,6 @@ public class UIManager : MonoBehaviour
         HidePartStats();
     }
 
-    private void HidePartStats() => Hide(_partStatsObjects);
-    private void ShowPartStats() => Show(_partStatsObjects);
-
     // Update is called once per frame
     private void Update()
     {
@@ -92,6 +89,10 @@ public class UIManager : MonoBehaviour
     private void ShowPaused() => Show(_pauseObjects);
 
     private void HidePaused() => Hide(_pauseObjects);
+
+    private void HidePartStats() => Hide(_partStatsObjects);
+
+    private void ShowPartStats() => Show(_partStatsObjects);
 
     //shows objects with ShowOnPause tag
     private void Show(GameObject[] gameObjects)
