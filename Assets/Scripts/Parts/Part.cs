@@ -5,6 +5,7 @@ namespace Parts
 {
     public class Part : MonoBehaviour
     {
+        private const float EgoAndCoolnessSum = 200f;
         /// <summary>
         /// affects the lenght of time curve stays flat
         /// </summary>
@@ -52,13 +53,23 @@ namespace Parts
         public int durability;
 
         /// <summary>
-        /// Perceived Durability
+        /// Inflate the stat so it looks like more than it is 
         /// What the player sees
         /// </summary>
         /// <returns></returns>
-        public double PerceivedDurability =>
-            Math.Ceiling(durability *
-                         (1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / 200f, FlatNess)) *
+        public double PerceivedStatInflated (int stat) =>
+            Math.Ceiling(stat *
+                         (1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / EgoAndCoolnessSum, FlatNess)) *
                          Magnitude);
+
+        /// <summary>
+        /// Inflate the stat so it looks like more than it is 
+        /// What the player sees
+        /// </summary>
+        /// <returns></returns>
+        public double PerceivedStatDeflated(int stat) =>
+            Math.Max(stat * 
+                     (1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / EgoAndCoolnessSum, FlatNess)) * 
+                     -1 * Magnitude, stat / 6f);
     }
 }

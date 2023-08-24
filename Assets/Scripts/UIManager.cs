@@ -99,29 +99,28 @@ public class UIManager : MonoBehaviour
 
     private void  ShowPartStats(Part part)
     {
+        var partName = _partStatsObjects.First(p => p.gameObject.name == "PartName");
+        var partNameText = partName.GetComponent<TMP_Text>();
+        partNameText.SetText(part.displayName);
+        
         var cost = _partStatsObjects.First(p => p.gameObject.name == "Cost");
         var costText = cost.GetComponent<TMP_Text>();
         costText.SetText($"Cost: {part.cost}");
         
         var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
         var durabilityText = durability.GetComponent<TMP_Text>();
-        durabilityText.SetText($"Durability: {part.PerceivedDurability}");
-        
-        var partName = _partStatsObjects.First(p => p.gameObject.name == "PartName");
-        var partNameText = partName.GetComponent<TMP_Text>();
-        partNameText.SetText(part.displayName);
+        durabilityText.SetText($"Durability: {part.PerceivedStatInflated(part.durability)}");
         
         var weight = _partStatsObjects.First(p => p.gameObject.name == "Weight");
         var weightText = weight.GetComponent<TMP_Text>();
-        weightText.SetText($"Weight: {part.weight}");
+        weightText.SetText($"Weight: {part.PerceivedStatDeflated(part.weight)}");
         
 
         var drag = _partStatsObjects.First(p => p.gameObject.name == "Drag");
         var dragText = drag.GetComponent<TMP_Text>();
-        dragText.SetText($"Drag: {part.drag}");
+        dragText.SetText($"Drag: {part.PerceivedStatDeflated(part.drag)}");
         
         ShowGameObjects(_partStatsObjects);
-        
     }
 
     //shows objects with ShowOnPause tag
