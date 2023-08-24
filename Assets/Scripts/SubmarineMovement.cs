@@ -34,7 +34,9 @@ public class SubmarineMovement : MonoBehaviour
 
     private void Move()
     {
-        rb.velocity = new Vector2(_moveDirection.x * moveSpeed, _moveDirection.y * moveSpeed);
+        rb.velocity = new Vector2(
+            _moveDirection.x * moveSpeed-Submarine.Instance.GetDrag,
+            _moveDirection.y * moveSpeed-Submarine.Instance.GetDrag);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
