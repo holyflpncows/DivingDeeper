@@ -1,4 +1,5 @@
 using System;
+using Parts;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -89,10 +90,17 @@ public class UIManager : MonoBehaviour
     private void ShowPaused() => Show(_pauseObjects);
 
     private void HidePaused() => Hide(_pauseObjects);
-
     private void HidePartStats() => Hide(_partStatsObjects);
+    private void HidePartStats(Part part, Vector3 position)
+    {
+        Hide(_partStatsObjects);
+    }
 
-    private void ShowPartStats() => Show(_partStatsObjects);
+    private void ShowPartStats(Part part, Vector3 position)
+    {
+        _partStatsObjects[0].gameObject.transform.SetPositionAndRotation(position, new Quaternion());
+        Show(_partStatsObjects);
+    }
 
     //shows objects with ShowOnPause tag
     private void Show(GameObject[] gameObjects)
