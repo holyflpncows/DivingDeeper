@@ -53,6 +53,11 @@ namespace Parts
         public int durability;
 
         /// <summary>
+        /// Can't buy yet
+        /// </summary>
+        public bool isLocked;
+
+        /// <summary>
         /// Inflate the stat so it looks like more than it is 
         /// What the player sees
         /// </summary>
