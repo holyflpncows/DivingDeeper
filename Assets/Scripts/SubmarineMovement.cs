@@ -48,9 +48,9 @@ public class SubmarineMovement : MonoBehaviour
         rb.velocity = new Vector2(
             _moveDirection.x * moveSpeed*(Submarine.Instance.GetDrag),
             _moveDirection.y * moveSpeed*(Submarine.Instance.GetDrag));
+        var submarineSprite = gameObject.GetComponent<SpriteRenderer>();
+        submarineSprite.flipX = _moveDirection.x > 0;
     }
-
-
     
     private static void Died()
     {
