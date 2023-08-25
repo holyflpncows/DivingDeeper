@@ -31,7 +31,9 @@ public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
             //TODO popup already own this part
             return;
         }
-        
+        var soundFx = GameObject.Find("UpgradeSound").GetComponent<AudioSource>();
+        soundFx.time = 0.3375f;
+        soundFx.Play();
         Submarine.Instance.AddPart(this);
         
     }
