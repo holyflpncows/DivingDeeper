@@ -60,8 +60,8 @@ public class UIManager : MonoBehaviour
         {
             SetUiText(_subStatsObjects,"Ego", PlayerAttributes.Instance.ego.ToString());
             SetUiText(_subStatsObjects,"Cash", PlayerAttributes.Instance.cashMoney.ToString());
-            SetUiText(_subStatsObjects,"Durability", Submarine.Instance.GetDurability.ToString());
-            SetUiText(_subStatsObjects,"Drag", Submarine.Instance.GetDrag.ToString());
+            SetUiText(_subStatsObjects,"Durability", Submarine.Instance.GetDisplayDurability.ToString());
+            SetUiText(_subStatsObjects,"Drag", Submarine.Instance.GetDisplayDrag.ToString());
         }
 
         var ctrl = Input.GetKey(KeyCode.LeftControl)

@@ -46,8 +46,8 @@ public class SubmarineMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(
-            _moveDirection.x * moveSpeed-Submarine.Instance.GetDrag,
-            _moveDirection.y * moveSpeed-Submarine.Instance.GetDrag);
+            _moveDirection.x * moveSpeed*(Submarine.Instance.GetDrag),
+            _moveDirection.y * moveSpeed*(Submarine.Instance.GetDrag));
     }
 
 

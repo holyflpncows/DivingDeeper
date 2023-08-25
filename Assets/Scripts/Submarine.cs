@@ -47,7 +47,12 @@ public class Submarine : MonoBehaviour
 
         public int GetDurability => _parts.Sum(p => p.durability);
         
-        public int GetDrag => _parts.Sum(p => p.drag);
+        public float GetDrag => _parts.Sum(p => p.drag);
+        
+        public int GetDisplayDurability => (int)_parts.Sum(p => p.PerceivedStatInflated(p.durability));
+        
+        public float GetDisplayDrag => (float)_parts.Sum(p => p.PerceivedStatDeflated(p.drag));
+
 
         public bool HasPart(Part part) => _parts.Any(p => part.displayName == p.displayName 
                                                           && p.partType == part.partType);
