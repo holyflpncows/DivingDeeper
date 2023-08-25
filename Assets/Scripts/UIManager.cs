@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static SubmarineMovement;
 using static UpgradeButton;
+using Random = UnityEngine.Random;
 
 public class UIManager : MonoBehaviour
 {
@@ -14,8 +15,14 @@ public class UIManager : MonoBehaviour
     private GameObject[] _currentGameInfoObjects;
     private GameObject[] _subStatsObjects;
     private const float Tolerance = 0.01f;
+    public GameObject eel;
+
+    public float spawnRate = 20f;
+    private float spawnTimer = 0f;
+
     public float timePassed = 0f;
-    private double Depth =>  Math.Floor(timePassed * 10);
+    private GameObject _spawnBox;
+    private double Depth => Math.Floor(timePassed * 10);
 
     private void OnEnable()
     {
@@ -40,6 +47,7 @@ public class UIManager : MonoBehaviour
         _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
         _currentGameInfoObjects = GameObject.FindGameObjectsWithTag("CurrentGameInfo");
         _subStatsObjects = GameObject.FindGameObjectsWithTag("SubStats");
+        _spawnBox = GameObject.Find("BottomBoundary");
         HidePaused();
         HidePartStats();
     }
@@ -48,21 +56,31 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         timePassed += Time.deltaTime;
+        spawnTimer += Time.deltaTime;
+
 
         if (Time.timeScale != 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
         {
             Submarine.Instance.TakeDepthDamage(Depth);
-            SetUiText(_currentGameInfoObjects,"CurrentDepth", Depth + "m");
-            SetUiText(_currentGameInfoObjects,"HullIntegrity", Math.Max(0 ,Submarine.Instance.health).ToString());
-            
+            SetUiText(_currentGameInfoObjects, "CurrentDepth", Depth + "m");
+            SetUiText(_currentGameInfoObjects, "HullIntegrity", Math.Max(0, Submarine.Instance.health).ToString());
+
+            if (spawnTimer >= spawnRate)
+            {
+                spawnTimer = 0f;
+                Vector2 spawnPoint = new Vector2(Random.Range(-4f, 4f), -5);
+                var eelSpawn = Instantiate(eel, spawnPoint, Quaternion.identity);
+                var eelSize = Random.Range(0.1f, 0.7f);
+                eelSpawn.transform.localScale = new Vector3(eelSize, eelSize, 1);
+            }
         }
 
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Loadout"))
         {
-            SetUiText(_subStatsObjects,"Ego", PlayerAttributes.Instance.ego.ToString());
-            SetUiText(_subStatsObjects,"Cash", PlayerAttributes.Instance.cashMoney.ToString());
-            SetUiText(_subStatsObjects,"Durability", Submarine.Instance.GetDisplayDurability.ToString());
-            SetUiText(_subStatsObjects,"Drag", Submarine.Instance.GetDisplayDrag.ToString());
+            SetUiText(_subStatsObjects, "Ego", PlayerAttributes.Instance.ego.ToString());
+            SetUiText(_subStatsObjects, "Cash", PlayerAttributes.Instance.cashMoney.ToString());
+            SetUiText(_subStatsObjects, "Durability", Submarine.Instance.GetDisplayDurability.ToString());
+            SetUiText(_subStatsObjects, "Drag", Submarine.Instance.GetDisplayDrag.ToString());
         }
 
         var ctrl = Input.GetKey(KeyCode.LeftControl)

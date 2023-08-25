@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Parts;
 using Unity.VisualScripting;
@@ -9,12 +10,18 @@ public class SubmarineMovement : MonoBehaviour
     public Rigidbody2D rb;
 
     private Vector2 _moveDirection;
-
+    private bool _facingRight = true;
     private bool _amAlive = true;
+    private SpriteRenderer _submarineSprite;
 
     public delegate void HitThingAction();
 
     public static event HitThingAction YouAreDead;
+
+    private void Start()
+    {
+        _submarineSprite = gameObject.GetComponent<SpriteRenderer>();
+    }
 
     // Update is called once per frame
     private void Update()
@@ -48,8 +55,8 @@ public class SubmarineMovement : MonoBehaviour
         rb.velocity = new Vector2(
             _moveDirection.x * moveSpeed*(Submarine.Instance.GetDrag),
             _moveDirection.y * moveSpeed*(Submarine.Instance.GetDrag));
-        var submarineSprite = gameObject.GetComponent<SpriteRenderer>();
-        submarineSprite.flipX = _moveDirection.x > 0;
+        _submarineSprite.flipX = _facingRight;
+        _facingRight = _moveDirection.x > 0 && _moveDirection.x != 0;
     }
     
     private static void Died()

@@ -12,6 +12,7 @@ public class Submarine : MonoBehaviour
 
         public int health;
         private double _previousDepth;
+        private const bool godmode = true;
 
         private void Awake()
         {
@@ -59,6 +60,8 @@ public class Submarine : MonoBehaviour
 
         public void TakeDepthDamage(double depth)
         {
+            if (godmode)
+                return;
             if (Math.Abs(depth - _previousDepth) < 1d)
                 return;
             _previousDepth = depth;
@@ -68,6 +71,8 @@ public class Submarine : MonoBehaviour
 
         public void TakeEnemyDamage(int damage)
         {
+            if (godmode)
+                return;
             Instance.health -= damage;
         }
     }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1630247106442928526}
   - component: {fileID: 7182722798639864446}
   - component: {fileID: 8538797394749438885}
-  - component: {fileID: 1670457701115856641}
   - component: {fileID: -2685428226891887339}
+  - component: {fileID: 1439875403243844224}
   m_Layer: 0
   m_Name: Eel
   m_TagString: Enemy
@@ -114,7 +114,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8538797394749438885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,7 +130,28 @@ MonoBehaviour:
   speed: 0
   damage: 100
   displayName: EEEEL
---- !u!70 &1670457701115856641
+--- !u!95 &-2685428226891887339
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90737417225082649}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b2b97947a83cadb8b3afe3464dd74f7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!70 &1439875403243844224
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,27 +183,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.006192685, y: -7.382255e-10}
-  m_Size: {x: 3.5980496, y: 0.45151109}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 3.5859375, y: 0.8125}
   m_Direction: 1
---- !u!95 &-2685428226891887339
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 90737417225082649}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b2b97947a83cadb8b3afe3464dd74f7, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
