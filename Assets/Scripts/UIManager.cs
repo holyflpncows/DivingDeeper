@@ -49,7 +49,11 @@ public class UIManager : MonoBehaviour
         {
             var cost = _currentGameInfoObjects.First(p => p.gameObject.name == "CurrentDepth");
             var costText = cost.GetComponent<TMP_Text>();
-            costText.SetText($"{Math.Floor(timePassed)}m");
+            costText.SetText($"{Math.Floor(timePassed*10)}m");
+            var depthDamage = (int)Math.Ceiling(1 + Math.Pow(timePassed*10 / 200f, 4) * 0.03f);
+            Debug.Log($" depthDamage: {depthDamage}");
+            Submarine.Instance.health -= depthDamage;
+            Debug.Log($" health: {Submarine.Instance.health}");
         }
         
         var ctrl = Input.GetKey(KeyCode.LeftControl)

@@ -10,6 +10,8 @@ public class Submarine : MonoBehaviour
 
         public static Submarine Instance;
 
+        public int health = 200; 
+
         private void Awake()
         {
             if (Instance != null)
