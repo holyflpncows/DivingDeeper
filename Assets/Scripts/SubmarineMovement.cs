@@ -59,5 +59,4 @@ public class SubmarineMovement : MonoBehaviour
         deadSoundFx.Play();
         YouAreDead?.Invoke();
     }
-
 }
