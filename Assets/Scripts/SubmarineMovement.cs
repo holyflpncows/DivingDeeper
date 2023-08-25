@@ -25,11 +25,9 @@ public class SubmarineMovement : MonoBehaviour
 
     private void CheckIfAlive()
     {
-        if (_amAlive && Submarine.Instance.health <= 0)
-        {
-            _amAlive = false;
-            Died();
-        }
+        if (!_amAlive || Submarine.Instance.health > 0) return;
+        _amAlive = false;
+        Died();
     }
 
     private void FixedUpdate()
