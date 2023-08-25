@@ -10,7 +10,7 @@ public class Submarine : MonoBehaviour
 
         public static Submarine Instance;
 
-        public int health = 200; 
+        public int health; 
 
         private void Awake()
         {
@@ -30,6 +30,7 @@ public class Submarine : MonoBehaviour
             {
                 SetParts(Instance._parts);
             }
+            health = Instance.GetDurability + 200;
         }
 
         private static void SetParts(List<Part> parts)
@@ -43,10 +44,16 @@ public class Submarine : MonoBehaviour
             _parts.Add(part);
         }
 
-        public int GetDurability => _parts.Sum(p => p.durability);
+        private int GetDurability => _parts.Sum(p => p.durability);
         
         public int GetDrag => _parts.Sum(p => p.drag);
 
         public bool HasPart(Part part) => _parts.Any(p => part.displayName == p.displayName 
                                                           && p.partType == part.partType);
+
+        public void TakeDepthDamage(double depth)
+        {
+            var depthDamage = (int)Math.Ceiling(1 + Math.Pow(depth / 200f, 4) * 0.03f);
+            Instance.health -= depthDamage;
+        }
     }

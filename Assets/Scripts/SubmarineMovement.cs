@@ -1,5 +1,6 @@
 using System.Linq;
 using Parts;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SubmarineMovement : MonoBehaviour
@@ -9,6 +10,8 @@ public class SubmarineMovement : MonoBehaviour
 
     private Vector2 _moveDirection;
 
+    private bool _amAlive = true;
+
     public delegate void HitThingAction();
 
     public static event HitThingAction YouAreDead;
@@ -16,7 +19,17 @@ public class SubmarineMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        CheckIfAlive();
         ProcessInputs();
+    }
+
+    private void CheckIfAlive()
+    {
+        if (_amAlive && Submarine.Instance.health <= 0)
+        {
+            _amAlive = false;
+            Died();
+        }
     }
 
     private void FixedUpdate()
@@ -43,9 +56,16 @@ public class SubmarineMovement : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
         {
-            var deadSoundFx = GameObject.Find("Dead").GetComponent<AudioSource>();
-            deadSoundFx.Play();
-            YouAreDead?.Invoke();
+            Died();
         }
     }
+    
+    private static void Died()
+    {
+        Debug.Log("died");
+        var deadSoundFx = GameObject.Find("Dead").GetComponent<AudioSource>();
+        deadSoundFx.Play();
+        YouAreDead?.Invoke();
+    }
+
 }

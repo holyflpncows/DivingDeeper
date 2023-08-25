@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     private GameObject[] _currentGameInfoObjects;
     private const float Tolerance = 0.01f;
     public float timePassed = 0f;
+    private double Depth =>  Math.Floor(timePassed * 10);
 
     private void OnEnable()
     {
@@ -45,17 +46,14 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         timePassed += Time.deltaTime;
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
+
+        if (Time.timeScale != 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
         {
-            var cost = _currentGameInfoObjects.First(p => p.gameObject.name == "CurrentDepth");
-            var costText = cost.GetComponent<TMP_Text>();
-            costText.SetText($"{Math.Floor(timePassed*10)}m");
-            var depthDamage = (int)Math.Ceiling(1 + Math.Pow(timePassed*10 / 200f, 4) * 0.03f);
-            Debug.Log($" depthDamage: {depthDamage}");
-            Submarine.Instance.health -= depthDamage;
-            Debug.Log($" health: {Submarine.Instance.health}");
+            Submarine.Instance.TakeDepthDamage(Depth);
+            SetUiText("CurrentDepth", Depth + "m");
+            SetUiText("HullIntegrity", Submarine.Instance.health.ToString());
         }
-        
+
         var ctrl = Input.GetKey(KeyCode.LeftControl)
                    || Input.GetKey(KeyCode.RightControl);
         if (Input.GetKeyDown(KeyCode.Q) && ctrl)
@@ -74,6 +72,13 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 1;
             HidePaused();
         }
+    }
+
+    private void SetUiText(string objectName, string value)
+    {
+        var cost = _currentGameInfoObjects.First(p => p.gameObject.name == objectName);
+        var costText = cost.GetComponent<TMP_Text>();
+        costText.SetText(value);
     }
 
     public void Quit()
@@ -107,41 +112,41 @@ public class UIManager : MonoBehaviour
 
     private void HidePaused() => HideGameObjects(_pauseObjects);
     private void HidePartStats() => HideGameObjects(_partStatsObjects);
+
     private void HidePartStats(Part part)
     {
         HideGameObjects(_partStatsObjects);
     }
 
-    private void  ShowPartStats(Part part)
+    private void ShowPartStats(Part part)
     {
         var partName = _partStatsObjects.First(p => p.gameObject.name == "PartName");
         var partNameText = partName.GetComponent<TMP_Text>();
         partNameText.SetText(part.displayName);
-        
+
         var cost = _partStatsObjects.First(p => p.gameObject.name == "Cost");
         var costText = cost.GetComponent<TMP_Text>();
         costText.SetText($"Cost: {part.cost}");
-        
+
         var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
         var durabilityText = durability.GetComponent<TMP_Text>();
         durabilityText.SetText($"Durability: {part.PerceivedStatInflated(part.durability)}");
-        
+
         var weight = _partStatsObjects.First(p => p.gameObject.name == "Weight");
         var weightText = weight.GetComponent<TMP_Text>();
         weightText.SetText($"Weight: {part.PerceivedStatDeflated(part.weight)}");
-        
+
 
         var drag = _partStatsObjects.First(p => p.gameObject.name == "Drag");
         var dragText = drag.GetComponent<TMP_Text>();
         dragText.SetText($"Drag: {part.PerceivedStatDeflated(part.drag)}");
-        
+
         ShowGameObjects(_partStatsObjects);
     }
 
     //shows objects with ShowOnPause tag
     private void ShowGameObjects(GameObject[] gameObjects)
     {
-        Debug.Log("show");
         Time.timeScale = 0;
         foreach (var g in gameObjects)
         {
@@ -152,7 +157,6 @@ public class UIManager : MonoBehaviour
     //hides objects with ShowOnPause tag
     private void HideGameObjects(GameObject[] gameObjects)
     {
-        Debug.Log("hide");
         foreach (var g in gameObjects)
         {
             g.SetActive(false);
