@@ -1434,7 +1434,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a4a60b079c5939842929c278e0d82faa, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1985,7 +1985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -375.12, y: 131.45001}
+  m_AnchoredPosition: {x: -375.12006, y: 131.45001}
   m_SizeDelta: {x: -773.84, y: -243.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158466323
@@ -2215,7 +2215,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc342671a15d45c678cfad3ffcd96f8e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.501
+  m_Volume: 0.324
   m_Pitch: 1
   Loop: 1
   Mute: 0
