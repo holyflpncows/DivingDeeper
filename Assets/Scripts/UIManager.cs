@@ -45,9 +45,12 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         timePassed += Time.deltaTime;
-        var cost = _currentGameInfoObjects.First(p => p.gameObject.name == "CurrentDepth");
-        var costText = cost.GetComponent<TMP_Text>();
-        costText.SetText($"{Math.Floor(timePassed)}m");
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
+        {
+            var cost = _currentGameInfoObjects.First(p => p.gameObject.name == "CurrentDepth");
+            var costText = cost.GetComponent<TMP_Text>();
+            costText.SetText($"{Math.Floor(timePassed)}m");
+        }
         
         var ctrl = Input.GetKey(KeyCode.LeftControl)
                    || Input.GetKey(KeyCode.RightControl);

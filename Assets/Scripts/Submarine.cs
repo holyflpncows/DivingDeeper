@@ -45,6 +45,6 @@ public class Submarine : MonoBehaviour
         
         public int GetDrag => _parts.Sum(p => p.drag);
 
-        public bool HasPart(Part part) => _parts.Any(p => part.name == p.displayName 
+        public bool HasPart(Part part) => _parts.Any(p => part.displayName == p.displayName 
                                                           && p.partType == part.partType);
     }
