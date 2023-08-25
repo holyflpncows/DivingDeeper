@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private GameObject[] _pauseObjects;
     private GameObject[] _partStatsObjects;
     private GameObject[] _currentGameInfoObjects;
+    private GameObject[] _subStatsObjects;
     private const float Tolerance = 0.01f;
     public float timePassed = 0f;
     private double Depth =>  Math.Floor(timePassed * 10);
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
         _pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
         _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
         _currentGameInfoObjects = GameObject.FindGameObjectsWithTag("CurrentGameInfo");
+        _subStatsObjects = GameObject.FindGameObjectsWithTag("SubStats");
         HidePaused();
         HidePartStats();
     }
@@ -50,8 +52,16 @@ public class UIManager : MonoBehaviour
         if (Time.timeScale != 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
         {
             Submarine.Instance.TakeDepthDamage(Depth);
-            SetUiText("CurrentDepth", Depth + "m");
-            SetUiText("HullIntegrity", Math.Max(0 ,Submarine.Instance.health).ToString());
+            SetUiText(_currentGameInfoObjects,"CurrentDepth", Depth + "m");
+            SetUiText(_currentGameInfoObjects,"HullIntegrity", Math.Max(0 ,Submarine.Instance.health).ToString());
+        }
+
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Loadout"))
+        {
+            SetUiText(_subStatsObjects,"Ego", PlayerAttributes.Instance.ego.ToString());
+            SetUiText(_subStatsObjects,"Cash", PlayerAttributes.Instance.cashMoney.ToString());
+            SetUiText(_subStatsObjects,"Durability", Submarine.Instance.GetDurability.ToString());
+            SetUiText(_subStatsObjects,"Drag", Submarine.Instance.GetDrag.ToString());
         }
 
         var ctrl = Input.GetKey(KeyCode.LeftControl)
@@ -74,9 +84,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private void SetUiText(string objectName, string value)
+    private void SetUiText(GameObject[] gameObjects, string objectName, string value)
     {
-        var cost = _currentGameInfoObjects.First(p => p.gameObject.name == objectName);
+        var cost = gameObjects.First(p => p.gameObject.name == objectName);
         var costText = cost.GetComponent<TMP_Text>();
         costText.SetText(value);
     }

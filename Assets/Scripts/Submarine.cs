@@ -45,7 +45,7 @@ public class Submarine : MonoBehaviour
             _parts.Add(part);
         }
 
-        private int GetDurability => _parts.Sum(p => p.durability);
+        public int GetDurability => _parts.Sum(p => p.durability);
         
         public int GetDrag => _parts.Sum(p => p.drag);
 
