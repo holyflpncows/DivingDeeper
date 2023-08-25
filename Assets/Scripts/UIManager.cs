@@ -11,7 +11,9 @@ public class UIManager : MonoBehaviour
 {
     private GameObject[] _pauseObjects;
     private GameObject[] _partStatsObjects;
+    private GameObject[] _currentGameInfoObjects;
     private const float Tolerance = 0.01f;
+    public float timePassed = 0f;
 
     private void OnEnable()
     {
@@ -34,6 +36,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1;
         _pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
         _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
+        _currentGameInfoObjects = GameObject.FindGameObjectsWithTag("CurrentGameInfo");
         HidePaused();
         HidePartStats();
     }
@@ -41,6 +44,11 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        timePassed += Time.deltaTime;
+        var cost = _currentGameInfoObjects.First(p => p.gameObject.name == "CurrentDepth");
+        var costText = cost.GetComponent<TMP_Text>();
+        costText.SetText($"{Math.Floor(timePassed)}m");
+        
         var ctrl = Input.GetKey(KeyCode.LeftControl)
                    || Input.GetKey(KeyCode.RightControl);
         if (Input.GetKeyDown(KeyCode.Q) && ctrl)
