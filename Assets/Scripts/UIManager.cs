@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
         {
             Submarine.Instance.TakeDepthDamage(Depth);
             SetUiText("CurrentDepth", Depth + "m");
-            SetUiText("HullIntegrity", Submarine.Instance.health.ToString());
+            SetUiText("HullIntegrity", Math.Max(0 ,Submarine.Instance.health).ToString());
         }
 
         var ctrl = Input.GetKey(KeyCode.LeftControl)
