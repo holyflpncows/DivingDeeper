@@ -54,11 +54,15 @@ public class Submarine : MonoBehaviour
 
         public void TakeDepthDamage(double depth)
         {
-            Debug.Log($"depth: {depth}");
             if (Math.Abs(depth - _previousDepth) < 1d)
                 return;
             _previousDepth = depth;
             var depthDamage = (int)Math.Ceiling(1 + Math.Pow(depth / 200f, 4) * 0.03f);
             Instance.health -= depthDamage;
+        }
+
+        public void TakeEnemyDamage(int damage)
+        {
+            Instance.health -= damage;
         }
     }

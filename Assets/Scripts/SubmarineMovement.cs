@@ -50,13 +50,7 @@ public class SubmarineMovement : MonoBehaviour
             _moveDirection.y * moveSpeed-Submarine.Instance.GetDrag);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Contains(other.gameObject))
-        {
-            Died();
-        }
-    }
+
     
     private static void Died()
     {
