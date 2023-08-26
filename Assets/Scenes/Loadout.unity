@@ -3169,7 +3169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ego: 12
   investors: 3
-  cashMoney: 3000
+  cashMoney: 2147483647
   turnsLeft: 7
 --- !u!4 &948499001
 Transform:

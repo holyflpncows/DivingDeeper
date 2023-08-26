@@ -64,7 +64,6 @@ public class UIManager : MonoBehaviour
         _subStatsObjects = GameObject.FindGameObjectsWithTag("SubStats");
         _titanic = GameObject.Find("titanic");
         _spawnBox = GameObject.Find("BottomBoundary");
-        _titanic.SetActive(false);
         HidePaused();
         HideWon();
         HidePartStats();

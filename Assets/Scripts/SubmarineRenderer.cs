@@ -16,9 +16,10 @@ public class SubmarineRenderer : MonoBehaviour
         _subInstance.OnPartAdded += PartAdded;
 
         HideAllParts();
-
+        Debug.Log(_subInstance.Parts.Count);
         foreach (var part in _subInstance.Parts)
         {
+            Debug.Log(part.displayName);
             _parts.Add(part);
             ShowPartWithName(part.name);
         }
