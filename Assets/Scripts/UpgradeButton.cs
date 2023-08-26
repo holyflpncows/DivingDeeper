@@ -1,15 +1,13 @@
-using System;
 using Parts;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
 {
     public delegate void PartsStats(Part part);
 
     public GameObject lockedGameObject;
+    public SubmarineRenderer SubRenderer;
     public static event PartsStats PartsStatsEnter;
     public static event PartsStats PartsStatsExit;
     
@@ -58,12 +56,15 @@ public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        
         PartsStatsEnter?.Invoke(this);
+
+        SubRenderer.ShowTemporaryPart(this);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         PartsStatsExit?.Invoke(this);
+
+        SubRenderer.HideTemporaryPart(this);
     }
 }
