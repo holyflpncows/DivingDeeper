@@ -15,9 +15,11 @@ public class SubmarineMovement : MonoBehaviour
     private SpriteRenderer _submarineSprite;
     private static AudioSource _deadSoundFx;
 
-    public delegate void HitThingAction();
+    public delegate void HitThingEvent();
+    public delegate void WinEvent();
 
-    public static event HitThingAction YouAreDead;
+    public static event HitThingEvent YouAreDead;
+    public static event WinEvent YouWin;
 
     private void Start()
     {
@@ -66,5 +68,13 @@ public class SubmarineMovement : MonoBehaviour
         Debug.Log("died");
         _deadSoundFx.Play();
         YouAreDead?.Invoke();
+    }
+    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (GameObject.FindGameObjectsWithTag("Win").Contains(other.gameObject))
+        {
+            YouWin?.Invoke();
+        }
     }
 }

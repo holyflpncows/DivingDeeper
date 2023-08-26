@@ -12,6 +12,7 @@ using Random = UnityEngine.Random;
 public class UIManager : MonoBehaviour
 {
     private GameObject[] _pauseObjects;
+    private GameObject[] _wonObjects;
     private GameObject[] _partStatsObjects;
     private GameObject[] _currentGameInfoObjects;
     private GameObject[] _subStatsObjects;
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
     private void OnEnable()
     {
         YouAreDead += ShowPaused;
+        YouWin += ShowWon;
         PartsStatsEnter += ShowPartStats;
         PartsStatsExit += HidePartStats;
     }
@@ -35,6 +37,7 @@ public class UIManager : MonoBehaviour
     private void OnDisable()
     {
         YouAreDead -= ShowPaused;
+        YouWin -= ShowWon;
         PartsStatsEnter -= ShowPartStats;
         PartsStatsExit -= HidePartStats;
     }
@@ -45,11 +48,13 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         _pauseObjects = GameObject.FindGameObjectsWithTag("ShowOnPause");
+        _wonObjects = GameObject.FindGameObjectsWithTag("ShowOnWin");
         _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
         _currentGameInfoObjects = GameObject.FindGameObjectsWithTag("CurrentGameInfo");
         _subStatsObjects = GameObject.FindGameObjectsWithTag("SubStats");
         _spawnBox = GameObject.Find("BottomBoundary");
         HidePaused();
+        HideWon();
         HidePartStats();
         
         spawnTimer = spawnRate;
@@ -141,8 +146,10 @@ public class UIManager : MonoBehaviour
     }
 
     private void ShowPaused() => ShowGameObjects(_pauseObjects);
+    private void ShowWon() => ShowGameObjects(_wonObjects);
 
     private void HidePaused() => HideGameObjects(_pauseObjects);
+    private void HideWon() => HideGameObjects(_wonObjects);
     private void HidePartStats() => HideGameObjects(_partStatsObjects);
 
     private void HidePartStats(Part part)
