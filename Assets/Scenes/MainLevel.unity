@@ -3733,6 +3733,7 @@ GameObject:
   - component: {fileID: 1820724100}
   - component: {fileID: 1820724099}
   - component: {fileID: 1820724101}
+  - component: {fileID: 1820724102}
   m_Layer: 8
   m_Name: titanic
   m_TagString: Win
@@ -3911,9 +3912,21 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -3.6355782, y: -3.064001}
-  m_Size: {x: 2.9688523, y: 4.1120124}
-  m_Direction: 0
+  m_Offset: {x: -3.6355793, y: -1.9015608}
+  m_Size: {x: 2.9688532, y: 0.21525532}
+  m_Direction: 1
+--- !u!114 &1820724102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820724096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cbd810c15a81509b6030d404c84a5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1901475341
 GameObject:
   m_ObjectHideFlags: 0

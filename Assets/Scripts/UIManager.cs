@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static SubmarineMovement;
+using static Titanic;
 using static UpgradeButton;
 using Random = UnityEngine.Random;
 
@@ -23,12 +24,15 @@ public class UIManager : MonoBehaviour
     public float spawnRate = 10f;
     private float spawnTimer = 0f;
 
+    private bool _atBottom = false;
+
     public float timePassed = 0f;
     private GameObject _spawnBox;
     private double Depth => Math.Floor(timePassed * 25);
 
     private void OnEnable()
     {
+        TitanicArrived += AtBottom;
         YouAreDead += ShowPaused;
         YouWin += ShowWon;
         PartsStatsEnter += ShowPartStats;
@@ -37,12 +41,17 @@ public class UIManager : MonoBehaviour
 
     private void OnDisable()
     {
+        TitanicArrived -= AtBottom;
         YouAreDead -= ShowPaused;
         YouWin -= ShowWon;
         PartsStatsEnter -= ShowPartStats;
         PartsStatsExit -= HidePartStats;
     }
 
+    private void AtBottom(object sender, EventArgs args)
+    {
+        _atBottom = true;
+    }
 
     // Use this for initialization
     private void Start()
@@ -59,22 +68,25 @@ public class UIManager : MonoBehaviour
         HidePaused();
         HideWon();
         HidePartStats();
-        
+
         spawnTimer = spawnRate;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        timePassed += Time.deltaTime;
-        spawnTimer += Time.deltaTime;
-
+        if (!_atBottom)
+        {
+            timePassed += Time.deltaTime;
+            spawnTimer += Time.deltaTime;
+        }
 
         if (Time.timeScale != 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
         {
             Submarine.Instance.TakeDepthDamage(Depth);
             SetUiText(_currentGameInfoObjects, "CurrentDepth", Depth + "m");
-            SetUiText(_currentGameInfoObjects, "HullIntegrity", ((float) Submarine.Instance.health / (float)Submarine.Instance.startingHealth).ToString("P0"));
+            SetUiText(_currentGameInfoObjects, "HullIntegrity",
+                ((float)Submarine.Instance.health / (float)Submarine.Instance.startingHealth).ToString("P0"));
 
             if (spawnTimer >= spawnRate)
             {
@@ -94,7 +106,8 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Loadout"))
         {
             SetUiText(_subStatsObjects, "Ego", PlayerAttributes.Instance.ego.ToString());
-            SetUiText(_subStatsObjects, "Cash", PlayerAttributes.Instance.cashMoney.ToString("C", CultureInfo.GetCultureInfo("en-GB")));
+            SetUiText(_subStatsObjects, "Cash",
+                PlayerAttributes.Instance.cashMoney.ToString("C", CultureInfo.GetCultureInfo("en-GB")));
             SetUiText(_subStatsObjects, "Durability", Submarine.Instance.GetDisplayDurability.ToString());
             SetUiText(_subStatsObjects, "Drag", Submarine.Instance.GetDisplayDrag.ToString());
         }
@@ -222,5 +235,11 @@ public class UIManager : MonoBehaviour
     public void ClickTest()
     {
         Debug.Log("Clicked");
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject == GameObject.FindGameObjectWithTag("Win"))
+            _atBottom = true;
     }
 }

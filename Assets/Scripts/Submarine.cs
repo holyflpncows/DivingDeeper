@@ -17,6 +17,7 @@ public class Submarine : MonoBehaviour
     private double _previousDepth;
     private const bool godmode = false;
 
+
     private void Awake()
     {
         if (Instance != null)
