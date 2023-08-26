@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Linq;
 using Parts;
 using TMPro;
@@ -17,12 +18,12 @@ public class UIManager : MonoBehaviour
     private const float Tolerance = 0.01f;
     public GameObject eel;
 
-    public float spawnRate = 20f;
+    public float spawnRate = 500f;
     private float spawnTimer = 0f;
 
     public float timePassed = 0f;
     private GameObject _spawnBox;
-    private double Depth => Math.Floor(timePassed * 10);
+    private double Depth => Math.Floor(timePassed * 25);
 
     private void OnEnable()
     {
@@ -78,7 +79,7 @@ public class UIManager : MonoBehaviour
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Loadout"))
         {
             SetUiText(_subStatsObjects, "Ego", PlayerAttributes.Instance.ego.ToString());
-            SetUiText(_subStatsObjects, "Cash", PlayerAttributes.Instance.cashMoney.ToString());
+            SetUiText(_subStatsObjects, "Cash", PlayerAttributes.Instance.cashMoney.ToString("C", CultureInfo.GetCultureInfo("en-GB")));
             SetUiText(_subStatsObjects, "Durability", Submarine.Instance.GetDisplayDurability.ToString());
             SetUiText(_subStatsObjects, "Drag", Submarine.Instance.GetDisplayDrag.ToString());
         }
@@ -155,11 +156,11 @@ public class UIManager : MonoBehaviour
 
         var cost = _partStatsObjects.First(p => p.gameObject.name == "Cost");
         var costText = cost.GetComponent<TMP_Text>();
-        costText.SetText($"Cost: {part.cost}");
+        costText.SetText($"Cost: {part.cost.ToString("C", CultureInfo.GetCultureInfo("en-GB"))}");
 
         var durability = _partStatsObjects.First(p => p.gameObject.name == "Durability");
         var durabilityText = durability.GetComponent<TMP_Text>();
-        durabilityText.SetText($"Durability: {part.PerceivedStatInflated(part.durability)}");
+        durabilityText.SetText($"Durability: {part.PerceivedStatInflated(part.durability):N0}");
 
         var weight = _partStatsObjects.First(p => p.gameObject.name == "Weight");
         var weightText = weight.GetComponent<TMP_Text>();

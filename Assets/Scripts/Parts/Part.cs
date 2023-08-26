@@ -9,12 +9,12 @@ namespace Parts
         /// <summary>
         /// affects the lenght of time curve stays flat
         /// </summary>
-        private const double FlatNess = 3;
+        private const double FlatNess = 8;
 
         /// <summary>
         /// affects the magnitude of the final inflated amount
         /// </summary>
-        private const double Magnitude = 5;
+        private const double Magnitude = 10;
 
         /// <summary>
         /// PartType

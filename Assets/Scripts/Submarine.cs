@@ -14,7 +14,7 @@ public class Submarine : MonoBehaviour
     public int health;
     public EventHandler<Part> OnPartAdded;
     private double _previousDepth;
-    private const bool godmode = true;
+    private const bool godmode = false;
 
     private void Awake()
     {
@@ -34,7 +34,8 @@ public class Submarine : MonoBehaviour
         {
             SetParts(Instance.Parts);
         }
-        health = Instance.GetDurability + 200;
+
+        health = Instance.GetDurability + 20000;
     }
 
     private static void SetParts(List<Part> parts)
