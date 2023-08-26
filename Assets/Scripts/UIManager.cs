@@ -16,6 +16,7 @@ public class UIManager : MonoBehaviour
     private GameObject[] _partStatsObjects;
     private GameObject[] _currentGameInfoObjects;
     private GameObject[] _subStatsObjects;
+    private GameObject _titanic;
     private const float Tolerance = 0.01f;
     public GameObject eel;
 
@@ -52,7 +53,9 @@ public class UIManager : MonoBehaviour
         _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
         _currentGameInfoObjects = GameObject.FindGameObjectsWithTag("CurrentGameInfo");
         _subStatsObjects = GameObject.FindGameObjectsWithTag("SubStats");
+        _titanic = GameObject.Find("titanic");
         _spawnBox = GameObject.Find("BottomBoundary");
+        _titanic.SetActive(false);
         HidePaused();
         HideWon();
         HidePartStats();
@@ -80,6 +83,11 @@ public class UIManager : MonoBehaviour
                 var eelSpawn = Instantiate(eel, spawnPoint, Quaternion.identity);
                 var eelSize = Random.Range(0.1f, 0.7f);
                 eelSpawn.transform.localScale = new Vector3(eelSize, eelSize, 1);
+            }
+
+            if (Depth >= 3500 && !_titanic.activeSelf)
+            {
+                _titanic.SetActive(true);
             }
         }
 
