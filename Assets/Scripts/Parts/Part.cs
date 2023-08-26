@@ -25,6 +25,11 @@ namespace Parts
         /// Display Name
         /// </summary>
         public string displayName;
+        
+        /// <summary>
+        /// Name Name
+        /// </summary>
+        public string notDisplayName;
 
         /// <summary>
         /// Cost in cash-money

@@ -16,22 +16,21 @@ public class SubmarineRenderer : MonoBehaviour
         _subInstance.OnPartAdded += PartAdded;
 
         HideAllParts();
-        Debug.Log(_subInstance.Parts.Count);
         foreach (var part in _subInstance.Parts)
         {
-            Debug.Log(part.displayName);
             _parts.Add(part);
-            ShowPartWithName(part.name);
+            ShowPartWithName(part.notDisplayName);
         }
     }
 
     public void PartAdded(object sender, Part part)
     {
-        var originalParts = _parts.Where(p => p.name.StartsWith($"{part.partType}_"));
+        var originalParts = _parts.Where(p => p.notDisplayName.StartsWith($"{part.partType}_"));
         foreach (var originalPart in originalParts)
         {
             _parts.Remove(originalPart);
         }
+        _parts.Add(part);
 
         string name = GetPartComponentName(part);
 
@@ -49,13 +48,15 @@ public class SubmarineRenderer : MonoBehaviour
 
     public void HideTemporaryPart(Part part)
     {
+        if (_parts.Any(p=>p.notDisplayName == part.notDisplayName))
+            return;
         string name = GetPartComponentName(part);
         HidePartWithName(name);
     }
 
     private string GetPartComponentName(Part part)
     {
-        return part.name;
+        return part.notDisplayName;
     }
 
     private void ShowPartWithName(string name)

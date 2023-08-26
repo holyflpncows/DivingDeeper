@@ -13,6 +13,7 @@ public class UpgradeButton : Part, IPointerEnterHandler, IPointerExitHandler
     
     private void Start()
     {
+        notDisplayName = name;
         if (isLocked)
         {
             // Not sure how to set the rect transform. 
