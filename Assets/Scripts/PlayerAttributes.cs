@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerAttributes : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerAttributes : MonoBehaviour
     public int investors;
 
     public int cashMoney;
+    public int turnsLeft;
 
     private void Awake()
     {
@@ -31,5 +33,11 @@ public class PlayerAttributes : MonoBehaviour
         ego = Instance.ego;
         investors = Instance.investors;
         cashMoney = Instance.cashMoney;
+    }
+
+    public void NextTurn()
+    {
+        Instance.turnsLeft--;
+        cashMoney += Instance.investors * Random.Range(10, 100);
     }
 }

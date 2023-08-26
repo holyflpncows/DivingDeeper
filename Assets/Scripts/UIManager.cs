@@ -97,7 +97,7 @@ public class UIManager : MonoBehaviour
                 eelSpawn.transform.localScale = new Vector3(eelSize, eelSize, 1);
             }
 
-            if (Depth >= 3500 && !_titanic.activeSelf)
+            if (Depth >= 3750 && !_titanic.activeSelf)
             {
                 _titanic.SetActive(true);
             }
@@ -150,6 +150,23 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("MainLevel");
     }
 
+    public void CashOut()
+    {
+        PlayerAttributes.Instance.ego += (int)Depth / 100;
+        PlayerAttributes.Instance.cashMoney += (int)Depth * 100;
+        PlayerAttributes.Instance.investors += (int)Depth / 100;
+        PlayerAttributes.Instance.NextTurn();
+        SceneManager.LoadScene("Loadout");
+    }
+
+    public void FindInvestors()
+    {
+        PlayerAttributes.Instance.investors += Random.Range(2,100);
+        PlayerAttributes.Instance.ego += PlayerAttributes.Instance.investors / 100;
+        PlayerAttributes.Instance.NextTurn();
+        SceneManager.LoadScene("Loadout");
+    }
+    
     //controls the pausing of the scene
     public void PauseControl()
     {
