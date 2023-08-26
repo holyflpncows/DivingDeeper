@@ -1643,6 +1643,62 @@ MonoBehaviour:
   m_Spacing: {x: 23, y: 20}
   m_Constraint: 2
   m_ConstraintCount: 2
+--- !u!1 &553571870 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4426129135081686029, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+  m_PrefabInstance: {fileID: 1140007336155105601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!331 &553571873
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553571870}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 549391700f5b68d40838f51bfd3cf9fc, type: 3}
+  m_MaskAlphaCutoff: 0.2
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &555563277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2049,6 +2105,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645419075}
   m_CullTransparentMesh: 1
+--- !u!1 &657353467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5121877359109531795, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+  m_PrefabInstance: {fileID: 1140007336155105601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!331 &657353470
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657353467}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 011b19f8af4f8d24ab1cbb4b2852f684, type: 3}
+  m_MaskAlphaCutoff: 0.1
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &662923683
 GameObject:
   m_ObjectHideFlags: 0
@@ -5830,6 +5942,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 369292415}
     m_Modifications:
+    - target: {fileID: 83342607857896315, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 230635160386435644, guid: c5d9fe0636c712e49af267675531c642, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5845,6 +5961,26 @@ PrefabInstance:
     - target: {fileID: 3313575484769425302, guid: c5d9fe0636c712e49af267675531c642, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130649680074795174, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130649680074795174, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130649680074795174, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130649680074795174, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.284
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130649680074795174, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.382
       objectReference: {fileID: 0}
     - target: {fileID: 4412688398394728245, guid: c5d9fe0636c712e49af267675531c642, type: 3}
       propertyPath: m_IsActive
@@ -5981,6 +6117,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5248572347018582924, guid: c5d9fe0636c712e49af267675531c642, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1556515235}
+    - targetCorrespondingSourceObject: {fileID: 5121877359109531795, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 657353470}
+    - targetCorrespondingSourceObject: {fileID: 4426129135081686029, guid: c5d9fe0636c712e49af267675531c642, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 553571873}
   m_SourcePrefab: {fileID: 100100000, guid: c5d9fe0636c712e49af267675531c642, type: 3}
 --- !u!1001 &9059855029888475570
 PrefabInstance:
