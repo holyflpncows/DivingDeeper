@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     private const float Tolerance = 0.01f;
     public GameObject eel;
 
-    public float spawnRate = 500f;
+    public float spawnRate = 10f;
     private float spawnTimer = 0f;
 
     public float timePassed = 0f;
@@ -51,6 +51,8 @@ public class UIManager : MonoBehaviour
         _spawnBox = GameObject.Find("BottomBoundary");
         HidePaused();
         HidePartStats();
+        
+        spawnTimer = spawnRate;
     }
 
     // Update is called once per frame

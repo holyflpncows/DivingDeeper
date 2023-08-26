@@ -364,8 +364,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eel: {fileID: 90737417225082649, guid: e42743644ed1b2b3d8ff23fdc1f4dd5f, type: 3}
-  spawnRate: 2
-  timePassed: 0
+  spawnRate: 20
+  timePassed: 20
 --- !u!4 &384861001
 Transform:
   m_ObjectHideFlags: 0
@@ -2470,6 +2470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9472db29b94e2c8704e2d21f2c2d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Parts: []
   health: 0
 --- !u!4 &1323480160
 Transform:
