@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
             if (spawnTimer >= spawnRate)
             {
                 spawnTimer = 0f;
-                Vector2 spawnPoint = new Vector2(Random.Range(-4f, 4f), -5);
+                Vector3 spawnPoint = new Vector3(Random.Range(-4f, 4f), -5, -5);
                 var eelSpawn = Instantiate(eel, spawnPoint, Quaternion.identity);
                 var eelSize = Random.Range(0.1f, 0.7f);
                 eelSpawn.transform.localScale = new Vector3(eelSize, eelSize, 1);

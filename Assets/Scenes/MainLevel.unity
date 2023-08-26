@@ -208,7 +208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 196261770}
   - component: {fileID: 196261769}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LeftBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -730,7 +730,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420034}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1041,7 +1041,7 @@ Transform:
   m_GameObject: {fileID: 635705528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.31, y: 4.11, z: 0}
+  m_LocalPosition: {x: -3.31, y: 4.11, z: -3}
   m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2111,7 +2111,7 @@ GameObject:
   - component: {fileID: 1026062897}
   - component: {fileID: 1026062896}
   - component: {fileID: 1026062895}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2480,7 +2480,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117691757}
   - component: {fileID: 1117691756}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RightBoundary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2786,8 +2786,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Parts: []
-  health: 0
-  startingHealth: 0
+  health: 2000000000
+  startingHealth: 2000000000
 --- !u!4 &1323480160
 Transform:
   m_ObjectHideFlags: 0
@@ -2812,7 +2812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1428587097}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3499,7 +3499,7 @@ GameObject:
   - component: {fileID: 1719409513}
   - component: {fileID: 1719409512}
   - component: {fileID: 1719409511}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3603,7 +3603,7 @@ GameObject:
   - component: {fileID: 1820724097}
   - component: {fileID: 1820724100}
   - component: {fileID: 1820724099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: titanic
   m_TagString: Win
   m_Icon: {fileID: 0}
@@ -3671,8 +3671,8 @@ Transform:
   m_GameObject: {fileID: 1820724096}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.71, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -7.04, z: -2}
+  m_LocalScale: {x: 1.9999999, y: 1.9999999, z: 1.9999999}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -3734,21 +3734,21 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_Mass: 5000
+  m_LinearDrag: 5
+  m_AngularDrag: 0
+  m_GravityScale: -0.7
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 112
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 5
 --- !u!1 &1901475341
 GameObject:
   m_ObjectHideFlags: 0
