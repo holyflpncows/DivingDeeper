@@ -3168,7 +3168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ego: 100
   investors: 0
-  cashMoney: 3000
+  cashMoney: 3000000
 --- !u!4 &948499001
 Transform:
   m_ObjectHideFlags: 0

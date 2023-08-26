@@ -66,7 +66,7 @@ public class UIManager : MonoBehaviour
         {
             Submarine.Instance.TakeDepthDamage(Depth);
             SetUiText(_currentGameInfoObjects, "CurrentDepth", Depth + "m");
-            SetUiText(_currentGameInfoObjects, "HullIntegrity", Math.Max(0, Submarine.Instance.health).ToString());
+            SetUiText(_currentGameInfoObjects, "HullIntegrity", ((float) Submarine.Instance.health / (float)Submarine.Instance.startingHealth).ToString("P0"));
 
             if (spawnTimer >= spawnRate)
             {
@@ -199,6 +199,8 @@ public class UIManager : MonoBehaviour
     public void LoadLevel(string level)
     {
         Debug.Log(level);
+        Submarine.Instance.health = Submarine.Instance.GetDurability + 200;
+        Submarine.Instance.startingHealth = Submarine.Instance.health;
         SceneManager.LoadScene(level);
     }
 

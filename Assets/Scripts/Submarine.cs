@@ -12,6 +12,7 @@ public class Submarine : MonoBehaviour
     public static Submarine Instance;
 
     public int health;
+    public int startingHealth;
     public EventHandler<Part> OnPartAdded;
     private double _previousDepth;
     private const bool godmode = false;
@@ -34,8 +35,6 @@ public class Submarine : MonoBehaviour
         {
             SetParts(Instance.Parts);
         }
-
-        health = Instance.GetDurability + 20000;
     }
 
     private static void SetParts(List<Part> parts)
