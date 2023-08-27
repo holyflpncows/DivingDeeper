@@ -74,7 +74,7 @@ public class SubmarineMovement : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (GameObject.Find("titanic") != other.gameObject) return;
+        if (GameObject.Find("Titanic") != other.gameObject) return;
         Debug.Log("win!");
         YouWin?.Invoke();
         _ambianceFx.Stop();
