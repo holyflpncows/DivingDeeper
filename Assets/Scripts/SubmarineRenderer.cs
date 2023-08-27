@@ -16,6 +16,11 @@ public class SubmarineRenderer : MonoBehaviour
         _subInstance = Submarine.Instance;
         _subInstance.OnPartAdded += PartAdded;
 
+        ShowPurchasedParts();
+    }
+
+    private void ShowPurchasedParts()
+    {
         HideAllParts();
         foreach (var part in _subInstance.Parts)
         {
@@ -46,9 +51,7 @@ public class SubmarineRenderer : MonoBehaviour
 
     public void HideTemporaryPart(Part part)
     {
-        if (_parts.Any(p=>p.notDisplayName == part.notDisplayName))
-            return;
-        HidePartWithName(part.notDisplayName);
+        ShowPurchasedParts();
     }
 
     private void ShowPartWithName(string partName)
