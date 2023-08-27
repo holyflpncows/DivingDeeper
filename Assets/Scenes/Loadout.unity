@@ -549,6 +549,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 480671212}
     m_Modifications:
+    - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: cost
       value: 300000
@@ -1436,15 +1448,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_LocalScale.x
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_LocalScale.y
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_LocalScale.z
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: cost
@@ -1473,7 +1485,7 @@ PrefabInstance:
     - target: {fileID: 3114086871536566817, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ee4eaa615fa37e34ebd9acb01fdf3e76, type: 3}
+      objectReference: {fileID: 21300000, guid: 1f376b0548e1a794d8a947078ce8fc87, type: 3}
     - target: {fileID: 4173148736654433104, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_Name
       value: Propeller_LargeSteel
@@ -2409,15 +2421,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_LocalScale.x
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_LocalScale.z
-      value: 4
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 53.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 691016631503568388, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.7
       objectReference: {fileID: 0}
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: cost
@@ -3671,7 +3691,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -371.06006, y: 131.45001}
+  m_AnchoredPosition: {x: -371.06, y: 131.45001}
   m_SizeDelta: {x: -781.96, y: -243.70001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1158466323
