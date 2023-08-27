@@ -5130,12 +5130,12 @@ GameObject:
   - component: {fileID: 1820724101}
   - component: {fileID: 1820724102}
   m_Layer: 8
-  m_Name: titanic
+  m_Name: Titanic
   m_TagString: Win
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1820724097
 SpriteRenderer:
   m_ObjectHideFlags: 0

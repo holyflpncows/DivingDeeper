@@ -32,6 +32,12 @@ public class UIManager : MonoBehaviour
 
     private void OnEnable()
     {
+        if (isMainLevel)
+        {
+            _titanic = GameObject.Find("Titanic");
+            _titanic.SetActive(false);
+        }
+
         TitanicArrived += AtBottom;
         YouAreDead += ShowPaused;
         YouWin += ShowWon;
@@ -62,7 +68,6 @@ public class UIManager : MonoBehaviour
         _partStatsObjects = GameObject.FindGameObjectsWithTag("PartStats");
         _currentGameInfoObjects = GameObject.FindGameObjectsWithTag("CurrentGameInfo");
         _subStatsObjects = GameObject.FindGameObjectsWithTag("SubStats");
-        _titanic = GameObject.Find("titanic");
         _spawnBox = GameObject.Find("BottomBoundary");
         HidePaused();
         HideWon();
@@ -80,7 +85,7 @@ public class UIManager : MonoBehaviour
             spawnTimer += Time.deltaTime;
         }
 
-        if (Time.timeScale != 0 && SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel"))
+        if (Time.timeScale != 0 && isMainLevel)
         {
             Submarine.Instance.TakeDepthDamage(Depth);
             SetUiText(_currentGameInfoObjects, "CurrentDepth", Depth + "m");
@@ -96,7 +101,8 @@ public class UIManager : MonoBehaviour
                 eelSpawn.transform.localScale = new Vector3(eelSize, eelSize, 1);
             }
 
-            if (Depth >= 3750 && !_titanic.activeSelf)
+            var titanicDepth = 1000; //3750;
+            if (Depth >= titanicDepth && !_titanic.activeSelf)
             {
                 _titanic.SetActive(true);
             }
@@ -130,6 +136,8 @@ public class UIManager : MonoBehaviour
             HidePaused();
         }
     }
+
+    private static bool isMainLevel => SceneManager.GetActiveScene() == SceneManager.GetSceneByName("MainLevel");
 
     private void SetUiText(GameObject[] gameObjects, string objectName, string value)
     {
