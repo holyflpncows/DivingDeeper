@@ -34,7 +34,7 @@ public class SubmarineMovement : MonoBehaviour
     {
         CheckIfAlive();
         ProcessInputs();
-        _submarineSprite.flipX = _facingRight;
+        // _submarineSprite.flipX = _facingRight;
     }
 
     private void CheckIfAlive()

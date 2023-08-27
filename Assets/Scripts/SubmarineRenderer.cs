@@ -9,7 +9,7 @@ public class SubmarineRenderer : MonoBehaviour
 {
     [FormerlySerializedAs("Flip")] public bool flip;
     private Submarine _subInstance;
-    private List<Part> _parts = new List<Part>();
+    private readonly List<Part> _parts = new();
 
     private void Start()
     {
@@ -19,16 +19,18 @@ public class SubmarineRenderer : MonoBehaviour
         HideAllParts();
         foreach (var part in _subInstance.Parts)
         {
+            Debug.Log($"adding part: {part.displayName}");
             _parts.Add(part);
             ShowPartWithName(part.notDisplayName);
         }
     }
 
-    public void PartAdded(object sender, Part part)
+    private void PartAdded(object sender, Part part)
     {
-        var originalParts = _parts.Where(p => p.notDisplayName.StartsWith($"{part.partType}_"));
+        var originalParts = _parts.Where(p => p.notDisplayName.StartsWith($"{part.partType}_")).ToList();
         foreach (var originalPart in originalParts)
         {
+            Debug.Log($"removed part: {part.displayName}");
             _parts.Remove(originalPart);
         }
         _parts.Add(part);

@@ -45,6 +45,12 @@ public class Submarine : MonoBehaviour
 
     public void AddPart(Part part)
     {
+        var oldParts = Parts.Where(p => p.partType == part.partType && p.notDisplayName != part.notDisplayName).ToList();
+        foreach (var oldPart in oldParts)
+        {
+            Parts.Remove(oldPart);
+        }
+     
         Debug.Log($"parts # {Parts.Count()}");
         Parts.Add(part);
 
@@ -62,7 +68,7 @@ public class Submarine : MonoBehaviour
 
     public bool HasPart(Part part) => Parts.Any(p => part.displayName == p.displayName
                                                       && p.partType == part.partType);
-
+    public bool HasPartType(Part part) => Parts.Any(p => p.partType == part.partType);
     public void TakeDepthDamage(double depth)
     {
         if (godmode)
