@@ -22,8 +22,9 @@ public class UIManager : MonoBehaviour
     public GameObject eel;
 
     public float spawnRate = 10f;
-    private float spawnTimer = 0f;
+    private float _spawnTimer = 0f;
 
+    private const int TitanicDepth = 3750;
     private bool _atBottom = false;
 
     public float timePassed = 0f;
@@ -73,7 +74,7 @@ public class UIManager : MonoBehaviour
         HideWon();
         HidePartStats();
 
-        spawnTimer = spawnRate;
+        _spawnTimer = spawnRate;
     }
 
     // Update is called once per frame
@@ -82,9 +83,9 @@ public class UIManager : MonoBehaviour
         if (!_atBottom)
         {
             timePassed += Time.deltaTime;
-            spawnTimer += Time.deltaTime;
+            _spawnTimer += Time.deltaTime;
         }
-
+        
         if (Time.timeScale != 0 && isMainLevel)
         {
             Submarine.Instance.TakeDepthDamage(Depth);
@@ -92,17 +93,16 @@ public class UIManager : MonoBehaviour
             SetUiText(_currentGameInfoObjects, "HullIntegrity",
                 ((float)Submarine.Instance.health / (float)Submarine.Instance.startingHealth).ToString("P0"));
 
-            if (spawnTimer >= spawnRate)
+            if (_spawnTimer >= spawnRate)
             {
-                spawnTimer = 0f;
+                _spawnTimer = 0f;
                 Vector3 spawnPoint = new Vector3(Random.Range(-4f, 4f), -5, -5);
                 var eelSpawn = Instantiate(eel, spawnPoint, Quaternion.identity);
                 var eelSize = Random.Range(0.1f, 0.7f);
                 eelSpawn.transform.localScale = new Vector3(eelSize, eelSize, 1);
             }
 
-            var titanicDepth = 1000; //3750;
-            if (Depth >= titanicDepth && !_titanic.activeSelf)
+            if (Depth >= TitanicDepth && !_titanic.activeSelf)
             {
                 _titanic.SetActive(true);
             }
