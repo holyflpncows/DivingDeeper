@@ -33,31 +33,20 @@ public class SubmarineRenderer : MonoBehaviour
         }
         _parts.Add(part);
 
-        string partName = GetPartComponentName(part);
-
-        HideAllPartsOfType(part.partType);
-        ShowPartWithName(partName);
+        ShowTemporaryPart(part);
     }
 
     public void ShowTemporaryPart(Part part)
     {
-        string partName = GetPartComponentName(part);
-
         HideAllPartsOfType(part.partType);
-        ShowPartWithName(partName);
+        ShowPartWithName(part.notDisplayName);
     }
 
     public void HideTemporaryPart(Part part)
     {
         if (_parts.Any(p=>p.notDisplayName == part.notDisplayName))
             return;
-        string partName = GetPartComponentName(part);
-        HidePartWithName(partName);
-    }
-
-    private string GetPartComponentName(Part part)
-    {
-        return part.notDisplayName;
+        HidePartWithName(part.notDisplayName);
     }
 
     private void ShowPartWithName(string partName)
