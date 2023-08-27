@@ -1,36 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InifiniteScroll : MonoBehaviour
 {
-    private BoxCollider2D boxCollider;
-    private Rigidbody2D rb;
-    private float height;
-    private float speed = 2f;
+    private Image _image;
+    [SerializeField] private Vector2 speed;
     
     // Start is called before the first frame update
     void Start()
     {
-        boxCollider = GetComponent<BoxCollider2D>();
-        rb = GetComponent<Rigidbody2D>();
+        _image = GetComponent<Image>();
+        _image.material = new Material(_image.material); //Clone the original material
 
-        height = boxCollider.size.y;
-        rb.velocity = new Vector2(0, speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y < height)
-        {
-            Reposition();
-        }
+        _image.material.mainTextureOffset += speed * Time.deltaTime;
     }
 
     private void Reposition()
     {
-        Vector2 vector = new Vector2(0, height * 2f);
-        transform.position = (Vector2)transform.position + vector;
+
     }
 }
