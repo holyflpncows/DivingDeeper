@@ -11,7 +11,7 @@ public class SubmarineRenderer : MonoBehaviour
     private Submarine _subInstance;
     private readonly List<Part> _parts = new();
 
-    private void Start()
+    private void OnEnable()
     {
         _subInstance = Submarine.Instance;
         _subInstance.OnPartAdded += PartAdded;
@@ -19,10 +19,15 @@ public class SubmarineRenderer : MonoBehaviour
         ShowPurchasedParts();
     }
 
+    private void OnDisable()
+    {
+        _subInstance.OnPartAdded -= PartAdded;
+    }
+
     private void ShowPurchasedParts()
     {
         HideAllParts();
-        foreach (var part in _subInstance.Parts)
+        foreach (var part in Submarine.Parts)
         {
             Debug.Log($"adding part: {part.displayName}");
             _parts.Add(part);

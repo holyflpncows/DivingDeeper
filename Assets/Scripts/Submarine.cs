@@ -7,7 +7,8 @@ using UnityEngine;
 public class Submarine : MonoBehaviour
 {
     [HideInInspector]
-    public List<Part> Parts = new();
+    public static List<Part> Parts = new();
+    //public static List<string> PartNames = new();
 
     public static Submarine Instance;
 
@@ -34,13 +35,14 @@ public class Submarine : MonoBehaviour
     {
         if (Instance != null)
         {
-            SetParts(Instance.Parts);
+            SetParts(Parts);
         }
     }
 
     private static void SetParts(List<Part> parts)
     {
-        Instance.Parts = parts;
+        Parts = parts;
+        //PartNames = parts.Select(p => p.name).ToList();
     }
 
     public void AddPart(Part part)
