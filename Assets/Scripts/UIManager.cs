@@ -80,6 +80,10 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if(PlayerAttributes.Instance.turnsLeft <= 0)
+        {
+            ShowPaused();
+        }
         if (!_atBottom)
         {
             timePassed += Time.deltaTime;
@@ -159,7 +163,7 @@ public class UIManager : MonoBehaviour
 
     public void CashOut()
     {
-        PlayerAttributes.Instance.ego += (int)Depth / 100;
+        PlayerAttributes.Instance.ego += (int)Depth / 50;
         PlayerAttributes.Instance.cashMoney += (int)Depth * 100;
         PlayerAttributes.Instance.investors += (int)Depth / 100;
         PlayerAttributes.Instance.NextTurn();
