@@ -60,8 +60,8 @@ public class SubmarineMovement : MonoBehaviour
     private void Move()
     {
         rb.velocity = new Vector2(
-            _moveDirection.x * moveSpeed*(1/(Submarine.Instance.GetDrag+1)),
-            _moveDirection.y * moveSpeed*(1/(Submarine.Instance.GetDrag+1)));
+            _moveDirection.x * moveSpeed*(Submarine.Instance.GetDrag/10),
+            _moveDirection.y * moveSpeed*(Submarine.Instance.GetDrag/10));
         _facingRight = _moveDirection.x > 0 && _moveDirection.x != 0;
     }
     
