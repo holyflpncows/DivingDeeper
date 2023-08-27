@@ -5,16 +5,17 @@ namespace Parts
 {
     public class Part : MonoBehaviour
     {
-        private const float EgoAndCoolnessSum = 200f;
+        private const float EgoAndCoolnessProduct = 10000;
+
         /// <summary>
         /// affects the lenght of time curve stays flat
         /// </summary>
-        private const double FlatNess = 8;
+        private const double FlatNess = 2;
 
         /// <summary>
         /// affects the magnitude of the final inflated amount
         /// </summary>
-        private const double Magnitude = 10;
+        private const double Magnitude = 2;
 
         /// <summary>
         /// PartType
@@ -25,7 +26,7 @@ namespace Parts
         /// Display Name
         /// </summary>
         public string displayName;
-        
+
         /// <summary>
         /// Name Name
         /// </summary>
@@ -67,10 +68,10 @@ namespace Parts
         /// What the player sees
         /// </summary>
         /// <returns></returns>
-        public double PerceivedStatInflated (int stat) =>
+        public double PerceivedStatInflated(int stat) =>
             Math.Ceiling(stat *
-                         (1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / EgoAndCoolnessSum, FlatNess)) *
-                         Magnitude);
+                         (1 + Math.Pow((coolnessCoefficient * PlayerAttributes.Instance.ego) / EgoAndCoolnessProduct,
+                             FlatNess) * Magnitude));
 
         /// <summary>
         /// Inflate the stat so it looks like more than it is 
@@ -78,8 +79,7 @@ namespace Parts
         /// </summary>
         /// <returns></returns>
         public double PerceivedStatDeflated(int stat) =>
-            Math.Max(stat * 
-                     (1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / EgoAndCoolnessSum, FlatNess)) * 
-                     -1 * Magnitude, stat / 6f);
+            stat / ((1 + Math.Pow((coolnessCoefficient + PlayerAttributes.Instance.ego) / EgoAndCoolnessProduct,
+                FlatNess)) * Magnitude);
     }
 }

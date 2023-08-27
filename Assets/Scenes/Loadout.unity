@@ -1468,7 +1468,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: coolnessCoefficient
-      value: 18
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3114086871536566817, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_Sprite
@@ -3167,7 +3167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ce931e06914db2bf38a1ae6964f7c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ego: 12
+  ego: 50
   investors: 3
   cashMoney: 2147483647
   turnsLeft: 7
@@ -3910,7 +3910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: coolnessCoefficient
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3114086871536566817, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_Sprite
@@ -4354,6 +4354,10 @@ PrefabInstance:
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: displayName
       value: LOCKED
+      objectReference: {fileID: 0}
+    - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
+      propertyPath: coolnessCoefficient
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3114086871536566817, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_Sprite
@@ -5335,7 +5339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 879960056816937337, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: coolnessCoefficient
-      value: 27
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3114086871536566817, guid: 62ed28c098b49be42ba7944cd083f398, type: 3}
       propertyPath: m_Sprite
