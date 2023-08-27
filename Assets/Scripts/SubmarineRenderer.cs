@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class SubmarineRenderer : MonoBehaviour
 {
-    public bool Flip;
+    [FormerlySerializedAs("Flip")] public bool flip;
     private Submarine _subInstance;
     private List<Part> _parts = new List<Part>();
 
@@ -32,26 +33,26 @@ public class SubmarineRenderer : MonoBehaviour
         }
         _parts.Add(part);
 
-        string name = GetPartComponentName(part);
+        string partName = GetPartComponentName(part);
 
         HideAllPartsOfType(part.partType);
-        ShowPartWithName(name);
+        ShowPartWithName(partName);
     }
 
     public void ShowTemporaryPart(Part part)
     {
-        string name = GetPartComponentName(part);
+        string partName = GetPartComponentName(part);
 
         HideAllPartsOfType(part.partType);
-        ShowPartWithName(name);
+        ShowPartWithName(partName);
     }
 
     public void HideTemporaryPart(Part part)
     {
         if (_parts.Any(p=>p.notDisplayName == part.notDisplayName))
             return;
-        string name = GetPartComponentName(part);
-        HidePartWithName(name);
+        string partName = GetPartComponentName(part);
+        HidePartWithName(partName);
     }
 
     private string GetPartComponentName(Part part)
@@ -59,15 +60,15 @@ public class SubmarineRenderer : MonoBehaviour
         return part.notDisplayName;
     }
 
-    private void ShowPartWithName(string name)
+    private void ShowPartWithName(string partName)
     {
-        var child = GetComponentsInChildren<Transform>(true).First(c => c.name == name);
+        var child = GetComponentsInChildren<Transform>(true).First(c => c.name == partName);
         child.gameObject.SetActive(true);
     }
 
-    private void HidePartWithName(string name)
+    private void HidePartWithName(string partName)
     {
-        var child = GetComponentsInChildren<Transform>(true).First(c => c.name == name);
+        var child = GetComponentsInChildren<Transform>(true).First(c => c.name == partName);
 
         child.gameObject.SetActive(false);
     }
