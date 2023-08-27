@@ -7,7 +7,7 @@ public class InifiniteScroll : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Rigidbody2D rb;
     private float height;
-    private float speed = -3f;
+    private float speed = 2f;
     
     // Start is called before the first frame update
     void Start()
@@ -22,12 +22,15 @@ public class InifiniteScroll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Reposition();
+        if (transform.position.y < height)
+        {
+            Reposition();
+        }
     }
 
     private void Reposition()
     {
-        Vector2 vector = new Vector2(0,height*2f);
+        Vector2 vector = new Vector2(0, height * 2f);
         transform.position = (Vector2)transform.position + vector;
     }
 }
